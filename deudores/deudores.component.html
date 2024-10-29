@@ -26,7 +26,7 @@
                         <th>Tipo de deuda</th>
                         <th>Nombre de deuda</th>
                         <th>Monto (MXN)</th>
-                        <th>Fecha de último pago</th>
+                        <th>Fecha límite</th>
                         <th>Retraso (días)</th>
                         <!-- <th style="text-align:center;width:200px;">Quitar Acceso</th>
                             <th style="text-align:center;width:200px;">Conceder Acceso</th> -->
@@ -38,7 +38,7 @@
                         <td>{{ deudor.nombre_persona }}</td>
                         <td>{{ deudor.tipo_deuda }}</td>
                         <td>{{ deudor.nombre_deuda }}</td>
-                        <td>${{ deudor.monto }}</td>
+                        <td>${{ deudor.monto_restante }}</td>
                         <td class="fecha">{{ deudor.proximo_pago | date:'dd/MM/yyyy' }}</td>
                         <td class="dias-retraso">{{ calcularDiasRetraso(deudor.proximo_pago) }}</td>
                         <!-- <td>

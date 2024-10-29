@@ -40,6 +40,10 @@ export class PersonasService {
     return this.http.get<Deudores[]>(url);
   }
 
-  
+  consultarDeudores(id_fraccionamiento: number): Observable<Deudores[]> {
+    
+    const url = `${this.apiUrl}/Deudas/Consultar_Deudores?id_fraccionamiento=${id_fraccionamiento}`;
+    return this.http.get<Deudores[]>(url);
+  }
   
 }

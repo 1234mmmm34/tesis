@@ -11,6 +11,7 @@ export class Deudores {
     proximo_pago:string;
     estado:string;
     periodicidad:number;
+    monto_restante: number;
     constructor( 
         id_deudor: number,
         id_deuda: number,
@@ -23,7 +24,8 @@ export class Deudores {
         dias_gracia:number,
         proximo_pago:string,
         estado:string,
-        periodicidad:number)
+        periodicidad:number,
+        monto_restante: number)
         {
         this.id_deudor=id_deudor,
         this.id_deuda=id_deuda,
@@ -36,7 +38,8 @@ export class Deudores {
         this.dias_gracia=dias_gracia,
         this.proximo_pago=proximo_pago,
         this.estado=estado,
-        this.periodicidad=periodicidad
+        this.periodicidad=periodicidad,
+        this.monto_restante=monto_restante
 
         }
 }
