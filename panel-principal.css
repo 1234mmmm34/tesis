@@ -1,0 +1,426 @@
+body {
+  background-color: #f2f3f4;
+}
+
+
+hr {
+  height: 0.5px;
+  border: 0;
+  width: 85%;
+  background-color: rgb(217, 217, 224);
+}
+
+.nuevo {
+  background-color: rgb(62, 178, 62);
+  border-radius: 48%;
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px 2px 10px;
+  font-size: x-small;
+  margin-top: 30px;
+  color: #f5f1f1;
+  margin-left: 10px;
+
+}
+
+.example-container {
+  display: flex;
+
+  flex-direction: column;
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+
+}
+
+.configuracion {
+  margin-top: 10px;
+  /*  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.20); */
+  background-color: #fff;
+}
+
+img {
+  color: aliceblue;
+}
+
+.mat-toolbar {
+
+  /*  background-color: #DADED1; */
+ 
+  
+background-color: #3d3d3e;
+
+
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+
+}
+
+
+
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  z-index: 2;
+  padding-right: 0px !important;
+
+
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+}
+
+a {
+  margin-left: auto;
+
+}
+
+
+
+button {
+  margin-bottom: 10px;
+  padding: 0%;
+}
+
+a h2.example-app-name {
+  /* margin-left: auto; */
+  color: rgb(4, 8, 69);
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+
+}
+
+
+
+a h6 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: rgb(4, 8, 69);
+  line-height: 2%;
+
+
+}
+
+/*
+#usuario {
+  padding-top: 10px;
+  margin-right: 2%;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+*/
+
+
+
+
+.example-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. 
+      flex: 1;
+     */
+
+  flex: 1;
+
+
+  /* background-color: #edfbe6; */
+  /* background: linear-gradient(rgb(201, 231, 201),rgb(241, 241, 241), rgb(255, 255, 255)); */
+
+
+
+}
+
+.mat-sidenav-content {
+  overflow: hidden;
+}
+
+.example-is-mobile .example-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts.
+      flex: 1 0 auto; 
+     */
+
+  flex: 1 0 auto;
+
+}
+
+
+
+mat-sidenav {
+  width: 250px;
+
+  background: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.20);
+}
+
+mat-sidenav>a>p:hover {
+  background-color: aqua;
+}
+
+
+
+.opciones {
+  color: rgb(0, 0, 0);
+  padding-left: 50px;
+  padding-top: 16px;
+
+}
+
+.opciones1 {
+  color: rgb(0, 0, 0);
+  padding-left: 20px;
+  padding-bottom: 10px;
+
+}
+
+p {
+  font-size: 15px;
+  color: black;
+
+}
+
+
+p:hover,
+a:hover {
+
+  color: black !important;
+  transition: all 0.3s;
+
+}
+
+.opciones:hover, .opciones1:hover {
+  /*  border-left: solid 4px rgb(51, 52, 47); */
+  border-left: solid 4px #101146;
+
+
+}
+
+
+#logo {
+  height: 55px;
+  width: 130px;
+
+}
+
+
+
+
+
+mat-expansion-panel mat-expansion-panel-header {
+  background-color: #fff;
+  border-style: none;
+  box-shadow: none;
+
+
+}
+
+
+.mat-iconn {
+
+  position: absolute;
+  outline: #ccdfc3;
+  left: 10px;
+  -webkit-text-fill-color:#fff;
+
+}
+
+.mat-icono {
+
+  position: absolute;
+  outline: #ccdfc3;
+  left: 10px;
+  color: #757575;
+
+}
+
+.mat-side {
+
+  position: absolute;
+  outline: #ccdfc3;
+  left: 10px;
+  bottom: 3px;
+  -webkit-text-fill-color:#fff;
+
+}
+
+
+
+
+
+
+mat-panel-title,
+mat-nav-list,
+a,
+mat-expansion-panel-header,
+mat-sidenav-container {
+
+  font: 1em sans-serif;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  right: 50px;
+
+  scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+  scrollbar-width: thin;
+
+}
+
+.notification-drop {
+  font-family: 'Ubuntu', sans-serif;
+  color: #444;
+  z-index: 2;
+  position: fixed;
+  
+  scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+  scrollbar-width: thin;
+
+}
+
+
+
+.notification-drop .item {
+  padding: 10px;
+  font-size: 18px;
+  position: relative;
+  border-bottom: 1px solid #444;
+  top: 10px;
+  right: 20px;
+  border: 1px solid #444;
+
+
+
+}
+
+.notification-drop .item:hover {
+  cursor: pointer;
+}
+
+.notification-drop .item i {
+  margin-left: 10px;
+}
+
+.notification-drop .item ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  background: #fff;
+  left: -200px;
+  right: 0;
+  z-index: 1;
+  border-top: 1px solid #ddd;
+}
+
+.notification-drop .item ul li {
+  font-size: 16px;
+  height: 20%;
+  padding: 5px 5px;
+  /* 2px arriba y abajo, 5px a los lados */
+
+
+}
+
+.notification-drop .item ul li:hover {
+  background: #ddd;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+@media screen and (min-width: 500px) {
+  .notification-drop {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .notification-drop .item {
+    border: none;
+  }
+}
+
+
+
+.notification-bell {
+  font-size: 20px;
+}
+
+.btn__badge {
+  background: #FF5D5D;
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  right: 0px;
+  padding: 3px 10px;
+  border-radius: 50%;
+}
+
+.pulse-button {
+  box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.5);
+  -webkit-animation: pulse 1.5s infinite;
+}
+
+.pulse-button:hover {
+  -webkit-animation: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  70% {
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0 0 0 50px rgba(255, 0, 0, 0);
+  }
+
+  100% {
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+  }
+}
+
+.notification-text {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.notification-text span {
+  float: right;
+}

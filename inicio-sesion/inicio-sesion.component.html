@@ -1,0 +1,135 @@
+<head>
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Last-Modified" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+	
+
+</head>
+
+
+<div *ngIf="shouldRun" class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+	<mat-toolbar color="black" class="example-toolbar">
+		<!-- <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button> -->
+		<h2><img src="./assets/logo4.jpeg" id="logo"><img></h2>
+	</mat-toolbar>
+
+
+	<body> 
+
+		
+
+		<!------ Include the above in your HEAD tag ---------->
+
+
+
+
+		<div class="container">
+			<div class="row"> 
+				<div class="col-md-6 col-md-offset-3">
+					<div class="panel panel-login">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-xs-6">
+									<a  href="#" class="active" id="login-form-link">Iniciar sesión</a>
+								</div>
+								<div class="col-xs-6">
+									<a href="#" id="register-form-link">Regístrate ahora</a>
+								</div>
+							</div>
+							<hr>
+						</div>
+						<div class="panel-body">
+							<div class="row"> 
+								<div class="col-lg-12">
+									<form id="login-form" action="http://phpoll.com/login/process" method="post"
+										role="form" style="display: block;" #form="ngForm" [formGroup]="UserGroup">
+										<div class="form-group">
+											<input type="text" name="username" id="username" tabindex="1"
+												class="form-control" placeholder="Usuario" value="Usuario"  formControlName="username" [(ngModel)]="sesion.username">
+										</div>
+										<div class="form-group">
+											<input type="password" name="password" id="password" tabindex="2"
+												class="form-control" placeholder="Contraseña" formControlName="password" value="Password" [(ngModel)]="sesion.password">
+										</div>
+										<div class="form-group text-center">
+											<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+											<label for="remember"> Recordarme</label>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6 col-sm-offset-3">
+													<input type="submit" (click)="iniciar_sesion(form.value)"  name="login-submit" id="login-submit"
+														tabindex="4" class="form-control btn btn-login"
+														value="Iniciar sesión">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-lg-12">
+													<div class="text-center">
+														<a [routerLink]="['Recuperacion']" tabindex="5" class="forgot-password">¿Has olvidado tu contraseña?</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+									<form id="register-form" action="http://phpoll.com/register/process" method="post"
+										role="form" style="display: none;" #form1="ngForm" [formGroup]="UserGroup1">
+										<div class="form-group">
+											<input type="text" name="username" id="username" tabindex="1" 
+												class="form-control" placeholder="Usuario" value="" formControlName="username" [(ngModel)]="sesion.username">
+										</div>
+										<div class="form-group">
+											<input type="email" name="email" id="email" tabindex="1"
+												class="form-control" placeholder="Correo electronico" value="" formControlName="correo" [(ngModel)]="sesion.correo">
+										</div>
+										<div class="form-group"> 
+											<input type="password" name="password" id="password" tabindex="2"
+												class="form-control" placeholder="Contraseña" formControlName="password" [(ngModel)]="sesion.password">
+										</div>
+										<div class="form-group">
+											<input type="password" name="confirm-password" id="confirm-password"
+												tabindex="2" class="form-control" placeholder="Confirmar contraseña" formControlName="ppassword" [(ngModel)]="sesion.ppassword">
+										</div>
+										<div class="form-group">
+											<input type="text" name="town" id="town"
+												tabindex="2" class="form-control" placeholder="Nombre de la comunidad" formControlName="town" [(ngModel)]="sesion.town">
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6 col-sm-offset-3">
+													<input type="submit" name="register-submit" id="register-submit"
+														tabindex="4" class="form-control btn btn-register"
+														value="Crear cuenta" (click)="agregar_administrador(form1.value)" [routerLink]="['../']">
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</body>
+
+	
+
+
+
+</div>
+<!--
+<router-outlet></router-outlet>
+-->

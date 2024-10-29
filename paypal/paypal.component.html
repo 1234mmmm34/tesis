@@ -1,0 +1,48 @@
+<div class="top">
+<h2 class="titulo">Configuración general de pagos</h2>
+</div>
+
+<div>
+
+    <span>Agiliza tus pagos por medio de internet, con pasarelas como Paypal, ya no tendrás que hacer el tedioso proceso de cobro. Solo necesitas contar con una cuenta de Paypal Bussines</span>
+   
+
+
+
+    <div class="contenedor tema">
+        <div class="form">
+
+            <form class="Formulario" #form="ngForm" [formGroup]="UserGroup"> 
+
+                <p>
+                  <input type="text" formControlName="url" name="url" placeholder="url">
+                </p>
+                <p>
+                  <input type="password" id="apellidoP" formControlName="client_key"
+                    placeholder="client key" [type]="isCKVisible ? 'text' : 'password'">
+                    <label (click)="toggleCKVisibility()"><mat-icon style="font-size:medium; margin-left: 30px;">visibility</mat-icon></label>
+
+                </p>
+                <p>
+                  <input type="password" id="apellidoM" formControlName="secret_key" name="secret_key"
+                    placeholder="secret key" [type]="isSKVisible ? 'text' : 'password'">
+                    <label (click)="toggleSKVisibility()"><mat-icon style="font-size:medium; margin-left: 30px;">visibility</mat-icon></label>
+
+                </p>
+                <p>
+                    <a target="_blank" href="https://www.paypal.com/es/cshelp/article/how-do-i-find-my-sandbox-api-credentials-ts1500">No encuentro mis credenciales</a>
+                </p>
+                <p *ngIf="!guardar">
+                    <button id="agregar" (click)="AgregarPasarela(UserGroup.value)">Agregar</button>
+                </p>
+                <p *ngIf="guardar">
+                    <button id="cambiar" (click)="actualizarPasarela(UserGroup.value)">Guardar cambios</button>
+                </p>
+            </form>
+
+
+        </div> 
+
+
+    </div>
+</div> 

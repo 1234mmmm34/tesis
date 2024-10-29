@@ -1,0 +1,73 @@
+<div class="top">
+    <h2 class="titulo">Editar cuenta</h2>
+  </div>
+  
+  <div> 
+  
+    <app-loading-spinner></app-loading-spinner>
+
+
+ 
+
+     
+    <div class="contenedor tema">
+        <div class="form">
+  
+        
+            <!--
+          <button (click)="toggleDarkTheme()">Toggle Dark Mode</button> 
+   
+          <input type="checkbox" id="dark-mode" class="input" (click)="toggleDarkTheme()">
+          <label for="dark-mode" class="label">
+              <div id="darkcircle" class="circle"></div>
+          </label>
+          -->
+  
+  
+          <form class="Formulario" #form="ngForm" [formGroup]="UserGroup">
+            <p>
+              <input type="text" class="letras" formControlName="nombre" name="nombre" placeholder="Nombre" [(ngModel)]="usuario.nombre">
+            </p>
+            <p>
+              <input type="text" id="apellidoP" formControlName="apellido_pat" name="apellido_pat"
+                placeholder="Apellido paterno" [(ngModel)]="usuario.apellido_pat">
+            </p>
+            <p>
+              <input type="text" id="apellidoM" formControlName="apellido_mat" name="apellido_mat"
+                placeholder="Apellido materno" [(ngModel)]="usuario.apellido_mat">
+            </p>
+            <p>
+              <input type="text" id="telefono" formControlName="telefono" name="telefono" placeholder="Teléfono"
+                [(ngModel)]="usuario.telefono">
+            </p>
+            <p>
+              <input type="date" id="fechaNacimiento" name="fecha_nacimiento" formControlName="fecha_nacimiento"
+                placeholder="Fecha de nacimiento" [(ngModel)]="usuario.fecha_nacimiento" required ngModel>
+            </p>
+            <p>
+              <input type="password" id="Contrasenia" name="contrasenia" formControlName="contrasenia"
+                placeholder="Contraseña" [(ngModel)]="usuario.contrasenia" required ngModel>
+            </p>
+            <p>
+              <input type="password" id="confirmarContrasena" name="confirmarContrasena"
+                formControlName="confirmarContrasena" placeholder="Confirmar contraseña"
+                [(ngModel)]="usuario.confirmarContrasena" required ngModel>
+            </p>
+            <div class="botones-container">
+              <button class="boton-verde" (click)="actualizar_usuario(form.value)">Actualizar</button>
+            </div>
+          </form>
+        </div>
+  
+        <div class="imagen">
+          <img [src]="imagenSeleccionada" alt="Imagen seleccionada" *ngIf="imagenSeleccionada" width="250" height="250">
+  
+        </div>
+  
+        <div>
+          <input type="file" (change)="handleInputFile($event)" accept="image/*" id="fileInput" style="display: none;">
+          <button class="btn_imagen" onclick="document.getElementById('fileInput').click()">Actualizar Imagen</button>
+        </div>
+  
+      </div>
+  </div>

@@ -1,0 +1,371 @@
+body{
+    background-color: #f2f7f0; 
+    margin: 0%;
+    background-position: center center;
+  
+  }
+  
+  .holaaa{
+    background-color:  #f2f7f0;
+    width: 500px;
+  
+  }
+    .derecha{
+     
+      background: linear-gradient(rgb(123, 141, 118),rgb(91, 107, 87), rgb(116, 134, 110));
+      display: flex;
+      flex-direction: column;
+      width: 20.5%;
+      height: 387px; 
+      position:absolute;
+      padding-top: 40px;
+      margin-left: 27%;
+      padding: 20px;
+      color: rgb(255, 255, 255);
+      
+    }
+    
+    .contenedor{
+      padding-top: 20px;
+  
+   
+      display: flex;
+  
+    }
+    
+    .mat-toolbar{
+      /*  background-color: #768650;  */
+       background-color: #575d43; 
+      }
+    
+      .titulo {
+        /*
+              color: rgb(0, 0, 0);
+        margin-top: 30px;
+        margin-left: 32%;
+        */
+  
+  
+  
+        margin-left: 111px;
+        display: inline-block;
+        line-height: 3;
+        
+        margin-bottom: 40px;
+    
+      }
+       
+      
+      input, p > select{
+        width: 300px; 
+        margin-bottom: 8px;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid #989898;
+        text-align: center;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+    
+      p > #telefono, p > #tipo, p> #fechaNacimiento{
+        width: 300px; 
+        outline: none;
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid #989898;
+      }
+      /*
+      .boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
+        padding: 10px;
+        margin: 10px 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+       
+      }
+      */
+  
+      .boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
+        padding: 10px;
+        margin: 10px 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        position: absolute;
+        top: 400px;
+        right: 600px;
+       
+      }
+      
+    
+      .form {
+        grid-gap: 1.15rem;
+        width: 320px;
+        text-align: center; 
+        margin-top: 100px;
+     
+      }
+      
+  h5{
+    margin-left: 48px;
+    font-size: 14px;
+  }
+   
+  a{
+    color: #317435;
+    font-weight: bold;
+  }
+      .Formulario{
+  
+        width: 270px;
+        grid-gap: 1.35rem;
+  
+    /*    border-left:1px solid rgb(0, 0, 0); */
+        height: 260px;
+       
+      }
+      
+  
+    
+      .boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left:110px;
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        background: #4c9c4e;
+        color: #FFFFFF;
+      }
+  
+      .boton-verde:hover {
+        background: #317435;
+      }
+      
+    
+      .botones-container {
+          display: flex;
+        
+      }
+      
+      table, th ,td, thead, tr {
+        text-align: center;
+        width: 300px; 
+      
+      }
+      
+    
+      .Formulario {
+  
+        margin-left: 16%;
+        margin-right: 16%;
+        padding-left: 20px;
+   
+        border-radius: 0% 2% 2% 0%;
+        
+      }
+      
+      select, #fechaNacimiento{
+        width: 180px;
+        height: 26px;
+      }
+      
+      
+      #telefono{
+        width: 210px;
+        height: 26px;
+      }
+      
+      #lote1{
+        display: inline-block;
+      
+      
+      }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   
+  #prop{
+    left: 60px;
+  }
+  .tabs {
+      top: -2px;
+    width: 600px;
+   
+  }
+  
+  /* Thumbs */
+  .tabs-thumbs {
+      margin: 0;
+      padding-left: 0;
+      border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 100px;
+   
+  }
+  
+  .tabs-thumb {
+    margin-bottom: 13px;
+      line-height: 3;
+    display: inline-block;
+      position:relative;
+    margin-right: 90px;
+    display: block;
+  
+  
+      .eti {
+          display: block;
+  
+          color: #9d9d9d;
+          text-decoration: none;
+          cursor: pointer;
+  
+          &:hover {
+              color:  #17531f;
+          }
+      }
+  }
+   
+  /* Panels */
+  .tabs-panels {
+      margin: 0;
+      height: 210px;
+      list-style: none;
+  }
+  
+  .tabs-panel, .tabs-thumb.is-active a  {
+      display: none;
+    
+  }
+  
+  /* Active */
+  .tabs-thumb.is-active a {
+      color:  #17531f;
+  
+      &:hover {
+          cursor: default;
+          color:  #17531f;
+      }
+  
+      &::after {
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          height: 2px;
+          width: 100%;
+          background:  #17531f;
+      }
+  }
+  
+  /* General page styling */
+  
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   
+  #prop{
+    left: 60px;
+  }
+  .tabs1 {
+      top: -2px;
+    width: 600px;
+   
+  }
+  
+  /* Thumbs */
+  .tabs-thumbs1 {
+      margin: 0;
+      padding-left: 0;
+  
+      border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 100px;
+  }
+  
+  .tabs-thumb1 {
+    margin-bottom: 13px;
+      display: inline-block;
+      line-height: 3; 
+  
+  position: relative;
+    margin-right: 50px;
+    display: block;
+  
+      .eti {
+          display: block;
+  
+          color: #9d9d9d;
+          text-decoration: none;
+          cursor: pointer;
+  
+          &:hover {
+              color:  #17531f;
+          }
+      }
+  }
+   
+  /* Panels */
+  .tabs-panels1 {
+      margin: 0;
+      height: 210px;
+      list-style: none;
+  }
+  
+  .tabs-panel1, .tabs-thumb1.is-active a  {
+      display: none;
+    
+  }
+  
+  /* Active */
+  .tabs-thumb1.is-active a {
+      color:  #17531f;
+  
+      &:hover {
+          cursor: default;
+          color:  #17531f;
+      }
+  
+      &::after {
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          height: 2px;
+          width: 100%;
+          background:  #17531f;
+      }
+  }
+  
+  /* General page styling */
+  
+    
+    
+    

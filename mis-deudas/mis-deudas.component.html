@@ -1,0 +1,94 @@
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<body>
+
+    <app-loading-spinner></app-loading-spinner>
+
+    <div>
+        <h2 class="titulo">Mis deudas</h2>
+        <p id="descripcion">Promueve la confianza y la responsabilidad financiera entre los miembros, fortaleciendo así los lazos comunitarios y garantizando la sostenibilidad de proyectos y actividades futuras. </p>
+
+    </div>
+    <hr>
+
+ 
+    <div class="contenedor1" *ngIf="mostrarGrid">
+        <div id="buscar">
+  
+
+            <input type="text" name="filtrar" placeholder="buscar" id="buscar2" [(ngModel)]="filtroDeudores">
+
+            <select id="tipoDeuda" (change)="onChange($event)" id="buscar1">
+                <option [ngValue]=2 [disabled]="true">-- Estado de la deuda --</option>
+                <option value="0">Todas</option>
+                <option value="1">Pagada</option>
+                <option value="2">No pagada</option>
+            </select>
+
+            <!--
+                        <input type="date" name="filtrarFecha" id="buscar1"> 
+
+            -->
+
+           
+
+        </div>
+
+        <div class="contenedor2">
+
+            <table class="table" width="100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tipo de Deuda</th>
+                        <th>Nombre de Deuda</th>
+                        <th>Monto</th>
+                        <th>ultimo pago</th>
+                        <th>próxima fecha de pago</th>
+                        <th>Periodicidad</th>
+                        <th>Retraso (dias)</th>
+                        <th>Recargo</th>
+                        <th>Total</th>
+                        <th>Acciones y ver más</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tr mat-row matRowDef="columns: displayedcolumns;"
+                        *ngFor="let deudor of Deudores_totales; let i = index" [ngClass]="{ 'row-red': calcularDiasRetraso(deudor.proximo_pago, deudor.periodicidad) > 0 }">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ deudor.tipo_deuda }}</td>
+                        <td>{{ deudor.nombre_deuda }}</td>
+                        <td>${{ deudor.monto }} MXN</td>
+                        <td class="fecha">{{ formatearFecha(deudor.proximo_pago) }}</td>
+                        <td>
+                            {{calcularProximoPago(deudor.proximo_pago,deudor.periodicidad)}}
+                        </td>
+                        <td>{{ deudor.periodicidad === 0 ? '-' : deudor.periodicidad }}</td>
+                        <td class="dias-retraso">{{ calcularDiasRetraso(deudor.proximo_pago,deudor.periodicidad) }}</td>
+                        <td>{{deudor.recargo === 0 ? '-' : '$'+deudor.recargo+' MXN'}}</td>
+                        <td>${{calcularTotal(calcularDiasRetraso(deudor.proximo_pago,deudor.periodicidad), deudor.periodicidad, deudor.monto, deudor.recargo)}} MXN</td>
+                        <td style="padding-left: 4%;"> <mat-icon style="font-size:medium;"  for="modal">visibility</mat-icon> </td>
+                    </tr> 
+                </tbody>
+            </table>
+
+            <div class="pages">
+                <mat-paginator [length]="Deudores_totales.length" [pageSize]="verdaderoRango"
+                    [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="pageChanged($event)">
+                </mat-paginator>
+            </div>
+        </div>
+
+        <ng-template #noencontrado>
+            <div class="div-noen">
+                <img class="noencontrado" src="./no-en2.jpg">
+                <p>holaaa</p>
+            </div>
+
+        </ng-template>
+    </div>
+</body>
+  

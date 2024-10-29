@@ -1,0 +1,58 @@
+
+.container {
+    width: 40%;
+    margin: 0 auto;
+    background: linear-gradient(rgb(201, 231, 201),rgb(241, 241, 241), rgb(255, 255, 255));
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    margin-top: 50px;
+}
+
+.titulo {
+    text-align: center;
+    color: black;
+}
+
+
+.generar-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.green-button {
+    background-color: #619d51;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.download-button {
+    background-color: #619d51;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+.qr-container {
+    text-align: center;
+}
+
+.advertencia {
+    color: #ff3333;
+    font-style: italic;
+    margin-top: 10px;
+    font-size: 30;
+}
+
+img{
+    margin:auto;
+    color: black;
+}

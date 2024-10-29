@@ -1,0 +1,460 @@
+
+body {
+
+
+  background-color: #f2f3f4;
+  margin: 0%;
+  background-position: center center;
+
+}
+
+.contenedor1 {
+  display: flexbox; 
+  margin: 0%; 
+
+}
+
+.form-group > #asunto{
+  border:none;
+  border-bottom:1px solid #757575;
+  border-radius: 0%;
+  width: 270px !important;
+  
+
+}
+
+textarea{
+  margin:auto !important;
+  width: 100%;
+  text-align: center;
+  resize: none;
+
+}
+
+
+.asunto{
+  padding-left: 20px; 
+}
+
+
+#buscar1, #buscar2 {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 350px;
+  height: 40px;
+  outline: 0; 
+  padding-left: 20px;
+  margin-left: 50px;
+
+}
+
+.contenedor2 {
+  height: 600px;
+  width: 70%;
+
+  overflow: hidden;
+  margin-left: 6%;
+  padding-top: 200px;
+
+  display: flexbox;
+}
+
+
+.boton {
+  background-color: #242434;
+  outline: none;
+  color: #ffffff;
+  font-size: 14px;
+  height: 40px;
+  font-weight: normal;
+  width: 100px;
+  text-align: center;
+
+  text-transform: uppercase;
+  border-color: #242434;
+  border-radius: 5px;
+  border: none;
+
+  padding-left: 10px;
+  padding-right: 10px;
+
+  padding-top: 10px;
+
+
+
+}
+
+mat-icon:hover {
+  color: #6c5bb8; /* Cambia 'blue' al color que desees */
+  cursor: pointer; /* Opcional: Cambia el cursor al cursor de puntero */
+}
+
+.boton:hover {
+  color: #ffffff;
+  background-color: #6c5bb8;
+  border-color: #6c5bb8;
+}
+
+#view-button{
+  background-color: #ffffff;
+  border: #ffffff;
+}
+
+
+
+
+
+
+#buscar {
+  position: absolute;
+  top: 170px;
+  margin-left: 6%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+
+  padding-top: 20px;
+
+  background-color: #ffffff;
+
+  width: 90%;
+  height: 9%;
+
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.titulo {
+  text-align: justify !important;
+  padding-top: 20px;
+  margin-left: 100px;
+  color: rgb(97, 94, 94) !important;
+
+}
+
+#descripcion {
+  text-align: justify !important;
+  margin-left: 100px;
+  margin-right: 70px;
+  color: rgb(97, 94, 94) !important;
+}
+
+hr {
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #a7a4a4 inset;
+}
+
+
+
+
+.boton-verde,
+.boton-amarillo,
+.boton-rojo,
+.boton-azul {
+  padding: 10px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 5px;
+  height: 10px;
+  cursor: pointer;
+
+
+
+}
+
+
+
+
+
+table {
+  background-color: #ffffff;
+  position: absolute;
+  top: 300px;
+  width: 90%;
+  font: 1em sans-serif;
+  margin: auto;
+
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.pages {
+  display: flex;
+   justify-content: center;
+   position: absolute;
+   top: 80%;
+   
+   left: 40%;
+ }
+
+ mat-paginator{
+  background-color: transparent;
+ }
+
+
+#td-view{
+  text-align: center;
+}
+
+td{
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto se desborda */
+  white-space: nowrap; /* Evita que el texto se ajuste a múltiples líneas */
+
+}
+
+
+
+/*    MODAL   */
+
+
+
+
+
+
+
+input[type="checkbox"]:checked ~ .modal,
+input[type="checkbox"]:checked ~ .modal-background {
+	display: block;
+}
+
+
+.modal-background {
+	width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 9998;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: none;
+    width: 400px;
+    height: 400px;
+    background-color: #fff;
+    box-sizing: border-box;
+    z-index: 9999;
+}
+.modal > p {
+	padding: 15px;
+    margin: 0;
+}
+.modal-header {
+	background-color: #f9f9f9;
+
+    box-sizing: border-box;
+    height: 55px;
+}
+.modal-header h3 {
+	margin: 0;
+    box-sizing: border-box;
+    padding-left: 15px;
+    line-height: 50px;
+    color: #4d4d4d;
+    font-size: 16px;
+    display: inline-block;
+    padding-bottom: 20px;
+}
+.modal-header label {
+	box-sizing: border-box;
+
+    float: right;
+    line-height: 50px;
+    padding: 0 15px 0 15px;
+    cursor: pointer;
+}
+.modal-header label:hover img {
+	opacity: 0.6;
+}
+
+#modal{
+  display: none;
+}
+
+
+.form {
+
+
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  align-items: center;
+  margin: auto;
+
+
+}
+
+.form-group > #asunto, .form-group > #mensaje{
+  margin-left: auto;
+  width: 100%;
+}
+
+.Formulario {
+  position: absolute;
+  left: 70px;
+}
+
+ng-template{
+  background-image: url("./notfound.png");
+
+
+  
+}
+
+.div-noen {
+
+ 
+  margin-top: 120px;
+
+  display: flex;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente */
+  
+}
+
+.noencontrado{
+
+width: 650px;
+height: 500px;
+left: 10%;
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 910px) {
+
+  body{
+    height: 1400px;
+  }
+  .contenedor2 {
+    height: 1200px;
+
+  }
+
+  #buscar1{
+    display: none;
+  }
+
+}
+
+
+@media screen and (max-width: 1300px) {
+
+  body{
+    height: 1400px;
+  }
+  .contenedor2 {
+    height: 1200px;
+
+  }
+  .boton{
+    display: none;
+  }
+
+
+
+}
+
+
+
+
+
+@media screen and (max-width: 700px) {
+ 
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    width: 50px;
+  }
+  tr {
+    border: 1px solid #ccc;
+  }
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+    white-space: normal;
+    text-align: left;
+
+    width: 100%;
+
+
+        /* Ajusta el ancho de la celda para que ocupe el 100% del ancho de la pantalla */
+     
+        /* Elimina el padding izquierdo para que el contenido comience desde el borde izquierdo */
+        padding-left: 0;
+  }
+  td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    content: attr(data-label);
+    font-weight: bold;
+
+        /* Ajusta la posición izquierda del pseudo-elemento para que esté alineado correctamente */
+        left: 0;
+        /* Ajusta el ancho del pseudo-elemento para que ocupe el 100% del ancho de la celda */
+        width: 100%;
+  }
+  body{
+    height: 800px;
+  }
+
+
+  
+#buscar {
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+#buscar1, .boton{
+  display: none;
+}
+
+input{
+  margin-left: 20%;
+}
+
+#buscar{
+  height: 70px;
+}
+
+thead{
+  width: 50px;
+}
+
+.asunto{
+  width: 30%;
+}
+} 

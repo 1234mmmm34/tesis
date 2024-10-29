@@ -1,0 +1,312 @@
+body {
+
+  background-image: url("../../assets/invitacion.png");
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+
+}
+
+#logo {
+  height: 55px;
+  width: 130px;
+
+} 
+
+.derecha {
+
+  background: rgb(31, 64, 116);
+  background: linear-gradient(169deg, rgba(31, 64, 116, 1) 0%, rgba(30, 56, 87, 1) 49%, rgba(24, 46, 74, 1) 100%);
+  display: flex;
+  flex-direction: column;
+  width: 23.5%;
+  height: 100%;
+  position: absolute;
+  padding-top: 40px;
+  margin-left: 34%;
+  padding: 20px;
+  color: rgb(255, 255, 255);
+
+  -webkit-box-shadow: 0px 3px 4px 0px rgba(0,0,0,0.2);
+-moz-box-shadow: 0px 3px 4px 0px rgba(0,0,0,0.2);
+box-shadow: 0px 3px 4px 0px rgba(0,0,0,0.2);
+
+}
+
+.contenedor {
+  padding-top: 20px;
+  margin-left: 49%;
+
+
+}
+
+.mat-toolbar {
+  /*  background-color: #768650;  */
+  background-color: rgb(149, 150, 193, 1);
+}
+
+.titulo {
+
+  color: rgb(0, 0, 0);
+  margin-top: 30px;
+  padding-left: 60px;
+
+}
+
+
+input,
+select {
+  width: 300px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  border-bottom: 1px solid #989898;
+}
+
+p>#telefono,
+p>#fechaNacimiento {
+  width: 300px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  border-bottom: 1px solid #989898;
+}
+
+
+
+
+.form {
+  display: block;
+  flex-direction: column;
+
+
+}
+
+
+
+
+.botones-container {
+  display: flex;
+  margin-left: 85px;
+  width: 150px;
+  margin-top: 15px;
+}
+
+table,
+th,
+td,
+thead,
+tr {
+  text-align: center;
+  width: 300px;
+
+}
+
+
+
+
+@media (max-width: 600px) {
+  .footer-distributed .footer-left, .footer-distributed .footer-right {
+    text-align: center;
+  }
+  .footer-distributed .footer-right {
+    float: none;
+    margin: 0 auto 20px;
+  }
+  .footer-distributed .footer-left p.footer-links {
+    line-height: 1.8;
+  }
+
+
+}
+
+
+@media (max-width: 1200px) {
+
+  .cont{
+    display: none;
+  }
+}
+
+
+
+
+
+.Formulario {
+
+  
+  display: flex;
+  flex-direction: column;
+  margin-left: 90%;
+  margin-top: 30%;
+  margin-right: 24%;
+  padding-left: 50px;
+  height: 500px;
+  background-color: #F2F3F4;
+  border-radius: 2% 2% 2% 2%;
+  width: 400px;
+
+  
+}
+
+.btn-register {
+  background-color: #242434;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  height: auto;
+  font-weight: normal;
+  padding: 14px 0;
+  text-transform: uppercase;
+  border-color: #242434;
+  width: 150px;
+}
+
+.btn-register:hover,
+.btn-register:focus {
+  color: #fff;
+  background-color: #6c5bb8;
+  border-color: #6c5bb8;
+}
+
+select,
+#fechaNacimiento {
+  width: 180px;
+  height: 26px;
+}
+
+
+#telefono {
+  width: 210px;
+  height: 26px;
+}
+
+
+a {
+  flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+/* FOOTER */
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+* {
+  font-family: Roboto;
+}
+
+
+section {
+  width: 100%;
+  display: inline-block;
+  background: #ffffff;
+  height: 60vh;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.footer-distributed {
+  background-color: #575d43;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: normal 16px sans-serif;
+  padding: 45px 50px;
+}
+
+.footer-distributed .footer-left p {
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Footer links */
+
+.footer-distributed p.footer-links {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0 0 10px;
+  padding: 0;
+  transition: ease .25s;
+}
+
+.footer-distributed p.footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+  transition: ease .25s;
+}
+
+.footer-distributed .footer-links a:before {
+  content: "·";
+  font-size: 20px;
+  left: 0;
+  color: #fff;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+  content: none;
+}
+
+.footer-distributed .footer-right {
+  float: right;
+  margin-top: 6px;
+  max-width: 180px;
+}
+
+.footer-distributed .footer-right a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+  margin-left: 3px;
+  transition: all .25s;
+}
+
+.footer-distributed .footer-right a:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+}
+
+.footer-distributed p.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries */
+
+@media (max-width: 600px) {
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-right {
+    text-align: center;
+  }
+
+  .footer-distributed .footer-right {
+    float: none;
+    margin: 0 auto 20px;
+  }
+
+  .footer-distributed .footer-left p.footer-links {
+    line-height: 1.8;
+  }
+}

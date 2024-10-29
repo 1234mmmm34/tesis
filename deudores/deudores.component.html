@@ -1,0 +1,75 @@
+<body>
+
+    <app-loading-spinner></app-loading-spinner>
+
+    <div>
+        <h2 class="titulo">Deudores</h2>
+        <p id="descripcion">Consulta deudores de pagos ordinarios y extraordinarios. </p>
+    </div>
+
+    <hr>
+
+    <div class="contenedor" *ngIf="MostrarPanel">
+        <form id="buscar">
+            <input type="text" id="tbuscar" class="form-control" name="filtrar" placeholder="buscar">
+        </form>
+
+
+        <div class="contenedor2" *ngIf="this.Deudores1.length>0; else noencontrado">
+
+
+            <table id="example" class="table" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Persona</th>
+                        <th>Tipo de deuda</th>
+                        <th>Nombre de deuda</th>
+                        <th>Monto (MXN)</th>
+                        <th>Fecha de último pago</th>
+                        <th>Retraso (días)</th>
+                        <!-- <th style="text-align:center;width:200px;">Quitar Acceso</th>
+                            <th style="text-align:center;width:200px;">Conceder Acceso</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let deudor of Deudores1; let i = index">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ deudor.nombre_persona }}</td>
+                        <td>{{ deudor.tipo_deuda }}</td>
+                        <td>{{ deudor.nombre_deuda }}</td>
+                        <td>${{ deudor.monto }}</td>
+                        <td class="fecha">{{ deudor.proximo_pago | date:'dd/MM/yyyy' }}</td>
+                        <td class="dias-retraso">{{ calcularDiasRetraso(deudor.proximo_pago) }}</td>
+                        <!-- <td>
+                                <a class="btn btn-sm text-white btn-danger" style="margin: auto;" (click)="restringir_acceso(deudor.id_deuda)">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Restringir
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm text-white btn-success" style="margin: auto;" >
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar
+                                </a>
+                            </td> -->
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pages">
+                <mat-paginator [length]="Deudores_totales.length" [pageSize]="verdaderoRango" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="pageChanged($event)">
+                </mat-paginator>
+            </div>
+
+        </div>
+
+
+        <ng-template #noencontrado>
+            <div class="div-noen">
+                <img class="noencontrado" src="./notfound.png" alt="hola">
+    
+            </div>
+    
+        </ng-template>
+
+    </div>
+</body>

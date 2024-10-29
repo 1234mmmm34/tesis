@@ -1,0 +1,49 @@
+<mat-toolbar color="black" class="example-toolbar">
+  <h2><img src="../../assets/logo4.jpeg" id="logo"><img></h2>
+  <div
+    style="background-color: transparent transparent; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; margin-top: 10px; display: flex; justify-content: left; align-items: left; position: relative;">
+    </div>
+</mat-toolbar>
+
+
+	<body>
+
+
+    <div class="form-carta">
+      <h1 class="titulo">Recuperación de contraseña</h1>
+      <form [formGroup]="cambioContrasenaForm" (ngSubmit)="cambiarContrasenia()">
+        <!-- Los campos del formulario -->
+        <div>
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" name="email" formControlName="correo" required required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.com)">
+        </div>
+        <div>
+          <label for="token">Código o token:</label>
+          <input type="text" id="token" name="token" formControlName="codigo" required>
+        </div>
+        <div>
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" name="password" formControlName="contrasena" required>
+        </div>
+        <div>
+          <label for="confirmPassword">Confirmar contraseña:</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmarContrasena" required>
+        </div>
+        <!-- Botón para cambiar la contraseña -->
+        <div>
+          <button type="button" (click)="enviarCorreo()">Enviar Codigo</button>
+          <button type="submit">Cambiar contraseña</button>
+        </div>
+      </form>
+    </div>
+
+
+
+
+
+
+
+
+	</body>
+
+

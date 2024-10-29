@@ -1,0 +1,16 @@
+<div class="container">
+    <h2 class="titulo">Control de Acceso</h2>
+
+    <div class="generar-container">
+        <button class="green-button" (click)="generarCodigoQR()">Generar</button>
+    </div>
+
+    <div class="qr-container">
+        <img [src]="urlCodigoQR" alt="Presiona el Botón de Arriba para generar el código" #codigoQR >
+
+        <p class="advertencia">Comparte solamente con la persona que necesita acceso. No compartas este código con desconocidos.</p>
+
+        <button class="download-button" (click)="descargarCodigoQR()">Descargar</button>
+    </div>
+</div>
+

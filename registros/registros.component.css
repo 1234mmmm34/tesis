@@ -1,0 +1,261 @@
+body{
+    /*background-color: #ccdfc3; */ 
+    margin: 0%;
+  
+    background-image: url("src\assets\fondo.jpg");
+    background-position: center center;
+    background-size: 1295px 498px; 
+  
+    height: 70%;
+  }
+  
+  .derecha{
+   
+    background: linear-gradient(rgb(123, 141, 118),rgb(91, 107, 87), rgb(116, 134, 110));
+    display: flex;
+    flex-direction: column;
+    width: 20.5%;
+    height: 387px; 
+    position:absolute;
+    padding-top: 40px;
+    margin-left: 27%;
+    padding: 20px;
+    color: rgb(255, 255, 255);
+    
+  }
+  
+  .contenedor{
+    padding-top: 20px;
+  }
+  
+  .mat-toolbar{
+    /*  background-color: #768650;  */
+     background-color: #575d43; 
+    }
+  
+    .titulo {
+      
+      color: rgb(0, 0, 0);
+      margin-top: 30px;
+      text-align: center;
+  
+    }
+     
+    
+    input, select{
+      width: 300px;
+      border: 1px solid transparent;
+      background-color: transparent;
+      border-bottom: 1px solid #989898;
+    }
+  
+    p > #telefono, p > #fechaNacimiento{
+      width: 300px; 
+      border: 1px solid transparent;
+      background-color: transparent;
+      border-bottom: 1px solid #989898;
+    }
+    
+    .boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
+      padding: 10px;
+      margin: 10px 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+     
+    }
+    
+  
+    .form {
+      display: block;
+      flex-direction: column;
+  
+    }
+    
+    .Formulario{
+      display: block;
+      flex-direction: column;
+  
+     
+    }
+    
+    
+    .boton-verde {
+      font-family: "Roboto", sans-serif;
+      text-transform: uppercase;
+      background: #4c9c4e;
+      width: 40%;
+      padding: 12px;
+      margin: auto;
+      color: #FFFFFF;
+      font-size: 14px;
+      padding-left: 13%;
+    margin-bottom: 8px;
+      transition: all 0.3 ease;
+      cursor: pointer;
+    }
+  
+    .boton-verde:hover {
+      background: #317435;
+    }
+    
+  
+    .botones-container {
+        display: flex;
+    }
+    
+    table, th ,td, thead, tr {
+      text-align: center;
+      width: 300px; 
+    
+    }
+    
+  
+    .Formulario {
+      display: flex;
+      flex-direction: column;
+      margin-left: 50%;
+      margin-right: 23%;
+      padding-left: 20px;
+      background-color: beige;
+      border-radius: 0% 2% 2% 0%;
+      
+    }
+    
+    select, #fechaNacimiento{
+      width: 180px;
+      height: 26px;
+    }
+    
+    
+    #telefono{
+      width: 210px;
+      height: 26px;
+    }
+    
+    #lote1{
+      display: inline-block;
+    
+    
+    }
+    
+    a {
+      flex-direction: column;
+    }
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  /* FOOTER */
+  
+  
+  @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+  
+  * {
+    font-family: Roboto;
+  }
+  
+  
+  section {
+    width: 100%;
+    display: inline-block;
+    background: #ffffff;
+    height: 60vh;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+  
+  .footer-distributed {
+      background-color: #575d43; 
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font: normal 16px sans-serif;
+    padding: 45px 50px;
+  }
+  
+  .footer-distributed .footer-left p {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    margin: 0;
+  }
+  /* Footer links */
+  
+  .footer-distributed p.footer-links {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0 0 10px;
+    padding: 0;
+    transition: ease .25s;
+  }
+  
+  .footer-distributed p.footer-links a {
+    display: inline-block;
+    line-height: 1.8;
+    text-decoration: none;
+    color: inherit;
+    transition: ease .25s;
+  }
+  
+  .footer-distributed .footer-links a:before {
+    content: "·";
+    font-size: 20px;
+    left: 0;
+    color: #fff;
+    display: inline-block;
+    padding-right: 5px;
+  }
+  
+  .footer-distributed .footer-links .link-1:before {
+    content: none;
+  }
+  
+  .footer-distributed .footer-right {
+    float: right;
+    margin-top: 6px;
+    max-width: 180px;
+  }
+  
+  .footer-distributed .footer-right a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: #33383b;
+    border-radius: 2px;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+    margin-left: 3px;
+    transition:all .25s;
+  }
+  
+  .footer-distributed .footer-right a:hover{transform:scale(1.1); -webkit-transform:scale(1.1);}
+  
+  .footer-distributed p.footer-links a:hover{text-decoration:underline;}
+  
+  /* Media Queries */
+  
+  @media (max-width: 600px) {
+    .footer-distributed .footer-left, .footer-distributed .footer-right {
+      text-align: center;
+    }
+    .footer-distributed .footer-right {
+      float: none;
+      margin: 0 auto 20px;
+    }
+    .footer-distributed .footer-left p.footer-links {
+      line-height: 1.8;
+    }
+  }

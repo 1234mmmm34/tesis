@@ -1,0 +1,87 @@
+
+ 
+.contenedor {
+    width: 30%;
+    margin: auto;
+    height: 92%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2%;
+    position:absolute; top:23px; left:20px;
+    margin-left: 33%;
+    margin-bottom: 400px;
+  }
+  
+  .fecha{
+    width: 300px; 
+  }
+
+.botones-container{
+    margin: auto;
+}
+
+  .titulo {
+    text-align: center;
+    color: rgb(0, 0, 0);
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+   
+  }
+  
+  .Formulario{
+    display: flex;
+    flex-direction: column;
+   
+  }
+  
+  .boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
+    padding: 10px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  
+    
+   
+  }
+  
+  .boton-verde {
+    background-color: #4CAF50; /* Verde */
+  
+    
+    color: white;
+  }
+  
+  .boton-azul {
+    background-color: blue; /* Azul */
+    color: white;
+  }
+  
+  
+  table, th ,td, thead, tr {
+    text-align: center;
+    width: 300px; 
+  
+  }
+  
+  table{
+    position:absolute; top:23px; left:450px;
+    width: 800px;
+  }
+
+  .div-opciones-deuda{
+    margin-left: 45%;
+    margin-top: 1%;
+    font-size: 26;
+  }
+
+  .select-deuda{
+    background-color: #EDFBE6;
+  }
+  
+  

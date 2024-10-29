@@ -1,0 +1,72 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<mat-toolbar color="black" class="example-toolbar">
+	<!-- <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button> -->
+	<h2><img src="../../assets/disenio.png" id="logo"><img></h2>
+  </mat-toolbar>
+   
+  <body> 
+
+	<div class="derecha">
+		<h2>
+          {{invitacion[0].nombre_admin}} te ha invitado a formar parte de su comunidad!
+		</h2>
+		<h2>
+			{{invitacion[0].nombre_fraccionamiento}}.
+		</h2>
+		<h3>
+		  Por favor, completa los campos en el formulario para crear tu cuenta en STUDENT  &copy;.
+		</h3>
+	</div> 
+
+	<div class="contenedor">
+	  <div class="form">
+		
+  
+		<form id="formCrear" class="Formulario" #form="ngForm" [formGroup]="UserGroup">
+		  <h2 class="titulo">Configura tu cuenta</h2>
+		  <p>
+			<input type="text" formControlName="nombre" name="nombre" placeholder="Nombre" [(ngModel)]="usuario.nombre">
+		  </p>
+		  <p>
+			<input type="text" id="apellidoP" formControlName="apellido_pat" name="apellido_pat" placeholder="Apellido paterno" [(ngModel)]="usuario.apellido_pat">
+		  </p>
+		  <p>
+			<input type="text" id="apellidoM" formControlName="apellido_mat" name="apellido_mat" placeholder="Apellido materno" [(ngModel)]="usuario.apellido_mat">
+		  </p>
+		  <p>
+			<input type="text" id="telefono" formControlName="telefono" name="telefono" placeholder="Teléfono" [(ngModel)]="usuario.telefono">
+		  </p>
+		  <p>
+			<input type="date" id="fechaNacimiento" name="fecha_nacimiento" formControlName="fecha_nacimiento" placeholder="Fecha de nacimiento" [(ngModel)]="usuario.fecha_nacimiento" required ngModel>
+		  </p>
+		  <p>
+			<input type="text" id="correo" name="correo" formControlName="correo" placeholder=""  required  readonly>
+		</p>
+		<p style="display: none;">
+			<input type="text" id="id_fraccionamiento" name="id_fraccionamiento" formControlName="id_fraccionamiento" placeholder=""  required  readonly>
+		</p>
+		
+		<p>
+			<input type="text" id="tipo_usuario" name="tipo_usuario" formControlName="tipo_usuario" placeholder=""  required  readonly>
+		</p>
+		  <p>
+			<input type="password" id="Contrasenia" name="contrasenia" formControlName="contrasenia" placeholder="Contraseña" [(ngModel)]="usuario.contrasenia" required ngModel>
+		</p>
+		<p>
+		  <input type="password" id="confirmarContrasena" name="confirmarContrasena" formControlName="confirmarContrasena" placeholder="Confirmar contraseña" [(ngModel)]="usuario.confirmarContrasena" required ngModel>
+		</p>
+		<div class="botones-container">
+		  <button class="btn-register" (click)="agregar_usuario(form.value)">Enviar</button>
+		</div>
+		</form>
+	  </div>
+
+	</div>
+   
+  
+  </body>
+  

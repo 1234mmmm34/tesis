@@ -1,0 +1,32 @@
+<div class="container">
+    <h2 class="titulo">Consulta de Proveedores</h2>
+
+    <table class="tabla">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID Fraccionamiento</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Teléfono</th>
+                <th>Tipo</th>
+                <th>Dirección</th>
+                <th>Función</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let proveedor of proveedores" style="border-bottom: 1px solid #ccc;">
+                <td>{{ proveedor.id_proveedor }}</td>
+                <td>{{ proveedor.id_fraccionamiento }}</td>
+                <td>{{ proveedor.nombre }}</td>
+                <td>{{ proveedor.apellido_paterno }}</td>
+                <td>{{ proveedor.apellido_materno }}</td>
+                <td>{{ proveedor.telefono }}</td>
+                <td>{{ proveedor.tipo }}</td>
+                <td>{{ proveedor.direccion }}</td>
+                <td>{{ proveedor.funcion }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,112 @@
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
+<body>
+
+  <app-loading-spinner></app-loading-spinner>
+
+  <div>
+    <h2 class="titulo">Deudas</h2>
+    <p id="descripcion">Gestiona los movimientos financieros de tu comunidad.</p>
+
+</div>
+<hr>
+
+<div class="contenedor1">
+ <div id="buscar">
+    <select class="select-deuda" [(ngModel)]="tipo_formulario" (change)="onChangeTipoDeuda($event)"
+      style="width: 200px; height: 30px;">
+      <option value="" disabled selected>-- Selecciona el tipo de deuda --</option>
+      <option value="">Deudas Ordinarias</option>
+      <option value="extraordinario">Deudas Extraordinarias</option>
+    </select>
+  </div>
+
+
+
+  <div *ngIf="tipo_formulario==''">
+    <div class="contenedor2">
+    <table id="example" class="table" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Monto</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th class="fecha">Días de gracia</th>
+          <th>Periodicidad</th>
+          <th>Recargo aplicado</th>
+          <th>Próximo pago</th>
+          <th style="text-align:center;width:200px;">
+            Borrar
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr mat-row matRowDef="columns: displayedcolumns;" *ngFor="let deuda of deudas; let j=index"
+          (click)="onRowClicked(deuda)">
+          <th scope="row">{{deuda.id_deudas}}</th>
+          <td>{{deuda.monto}}</td>
+          <td>{{deuda.nombre}}</td>
+          <td>{{deuda.descripcion}}</td>
+          <td class="fecha">{{deuda.dias_gracia}}</td>
+          <td>{{deuda.periodicidad}}</td>
+          <td>{{deuda.recargo}}</td>
+          <td>{{deuda.proximo_pago1}}</td>
+          <td>
+            <a class="btn btn-sm text-white btn-danger" style="margin: auto;">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true" (click)="delete(deuda.id_deudas)"></span>
+            </a>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  <div *ngIf="tipo_formulario=='extraordinario'">
+    <div class="contenedor2">
+    <table id="example" class="table" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Monto</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th class="fecha">Días de gracia</th>
+          <th>Periodicidad</th>
+          <th>Recargo aplicado</th>
+          <th>Próximo pago</th>
+          <th style="text-align:center;width:200px;">
+            Borrar
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr mat-row matRowDef="columns: displayedcolumns;" *ngFor="let deuda of deudas; let j=index"
+          (click)="onRowClicked(deuda)">
+          <th scope="row">{{deuda.id_deudas}}</th>
+          <td>{{deuda.monto}}</td>
+          <td>{{deuda.nombre}}</td>
+          <td>{{deuda.descripcion}}</td>
+          <td class="fecha">{{deuda.dias_gracia}}</td>
+          <td>{{deuda.periodicidad}}</td>
+          <td>{{deuda.recargo}}</td>
+          <td>Null</td>
+          <td>
+            <a class="btn btn-sm text-white btn-danger" style="margin: auto;">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true" (click)="deleteExtra(deuda.id_deudas)"></span>
+            </a>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+</body>

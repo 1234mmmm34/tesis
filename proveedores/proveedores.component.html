@@ -1,0 +1,142 @@
+<body >
+
+  <app-loading-spinner></app-loading-spinner>
+
+  <div>
+    <h2 class="titulo">Gestión de proveedores</h2>
+    <p id="descripcion">Registra tus proveedores y toma el control de tus gastos. </p>
+  </div>
+
+  <hr>
+
+
+<div class="contenedor" *ngIf="mostrarGrid">
+
+  <form id="buscar">
+    <input type="text" id="tbuscar" class="form-control" name="filtrar" placeholder="buscar">
+    <label for="modal" class="boton" (click)="limpiarCampos()">Agregar</label>
+  </form>
+
+
+
+
+</div>
+
+<div class="contenedor2"  *ngIf="this.proveedores.length>0; else noencontrado">
+  <table id="example" class="table" cellspacing="0" width="100%">
+    <thead>
+      <tr mat-row matRowDef="columns: displayedcolumns;">
+        <th style="padding: 10px;">ID</th>
+        <th style="padding: 10px;">ID Fraccionamiento</th>
+        <th style="padding: 10px;">Nombre</th>
+        <th style="padding: 10px;">Apellido Paterno</th>
+        <th style="padding: 10px;">Apellido Materno</th>
+        <th style="padding: 10px;">Teléfono</th>
+        <th style="padding: 10px;">Tipo</th>
+        <th style="padding: 10px;">Dirección</th>
+        <th style="padding: 10px;">Función</th>
+        <th style="padding: 10px;">Editar</th>
+        <th style="padding: 10px;">Borrar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let proveedor of proveedores" style="border-bottom: 1px solid #ccc;">
+        <td style="padding: 10px; vertical-align: middle;">{{ proveedor.id_proveedor }}</td>
+        <td style="padding: 10px; vertical-align: middle;">{{ proveedor.id_fraccionamiento }}</td>
+        <td style="padding: 10px; vertical-align: middle;">{{ proveedor.nombre }}</td>
+        <td style="padding: 10px; vertical-align: middle;">{{ proveedor.apellido_paterno }}</td>
+        <td style="padding: 10px; vertical-align: middle;">{{ proveedor.apellido_materno }}</td>
+        <td style="padding: 10px; vertical-align: middle;">{{ proveedor.telefono }}</td>
+        <td style="padding: 10px; vertical-align: middle;">{{ proveedor.tipo }}</td>
+        <td style="padding: 10px; vertical-align: middle;">{{ proveedor.direccion }}</td>
+        <td style="padding: 10px; vertical-align: middle;">{{ proveedor.funcion }}</td>
+        <td style="padding: 10px; vertical-align: middle;">
+          
+          <label for="modal" (click)="cargarDatosProveedor(proveedor)" style="margin-left: 10px;">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
+          </label>
+        
+        </td>
+        <td style="padding: 10px; vertical-align: middle;">
+          
+          <label (click)="eliminarProveedor(proveedor.id_proveedor)" style="margin-left: 20px;">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="clear"></mat-icon>
+          </label>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noencontrado>
+  <div class="div-noen">
+      <img class="noencontrado" src="./notfound.png" alt="hola">
+
+  </div>
+
+</ng-template>
+
+    <!--------------------------FINAL MODAL ------------------------------------------------>
+
+
+
+    <input type="checkbox" id="modal">
+
+    <label for="modal" class="modal-background"></label>
+
+
+
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Agregar nuevo proveedor</h3>
+
+        <label for="modal">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC"
+            width="16" height="16" alt="">
+        </label>
+
+
+
+      </div>
+
+      <div class="form" > 
+        <form  id="formCrear" class="Formulario" #proveedorForm="ngForm" (ngSubmit)="agregarProveedor(proveedorModel)">
+          <p>
+            <input type="text" placeholder="Nombre del proveedor (o representante)" id="nombre" name="nombre" [(ngModel)]="proveedorModel.nombre" required>
+          </p>
+          <p>
+            <input type="text" placeholder="Apellido paterno" id="apellido_Paterno" name="apellido_Paterno" [(ngModel)]="proveedorModel.apellido_Paterno" required>
+          </p>
+          <p>
+            <input type="text" placeholder="Apellido materno" id="apellido_Materno" name="apellido_Materno" [(ngModel)]="proveedorModel.apellido_Materno" required>
+          </p>
+          <p>
+            <input type="text" placeholder="Teléfono" id="telefono" name="telefono" [(ngModel)]="proveedorModel.telefono" required>
+          </p>
+          <p>
+            <select id="tipo" name="tipo" [(ngModel)]="proveedorModel.tipo" required>
+              <option value="" disabled selected>-- Tipo de proveedor --</option>
+              <option value="Empresa">Empresa</option>
+              <option value="Persona">Persona</option>
+            </select>
+          </p>
+          <p>
+            <input type="text" placeholder="direccion" id="direccion" name="direccion" [(ngModel)]="proveedorModel.direccion" required>
+          </p>
+          <p>
+            <input type="text" placeholder="Función" id="funcion" name="funcion" [(ngModel)]="proveedorModel.funcion" required>
+          </p>
+          
+          <div style="padding-right: 340px; display: flex;">
+            <button type="submit" class="boton" style="min-width: 100px;">Agregar</button>
+            <button (click)="actualizarProveedor(proveedorModel)" type="button" class="boton" style="min-width: 100px;">Actualizar</button>
+          </div>
+
+        </form>
+        
+      </div>
+    </div>
+</body>
+
+

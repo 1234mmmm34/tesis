@@ -1,0 +1,100 @@
+<body *ngIf="tipo_formulario=='ordinario'">
+
+    <div class="contenedor" style="height: 700px; width: 700px;">
+        <!-- Formulario para agregar un nuevo ingreso ordinario -->
+        <h2 class="titulo2">Ingresos Ordinarios</h2>
+
+        <form id="formCrear" class="Formulario">
+
+            <p>
+                <select id="usuario" name="usuario" required ngModel (change)="onChangeUsuario($event)">
+                    <option *ngFor="let usuario of personas">
+                        {{usuario.id_persona}}- {{usuario.nombre}} {{usuario.apellido_pat}} {{usuario.apellido_mat}}
+                    </option>
+                </select>
+            </p>
+
+            <p>
+                <select id="deuda" name="deuda" required ngModel (change)="onChangeDeuda($event)">
+                    <option value="" hidden selected>
+                        -- Selecciona una deuda --
+                    </option>
+                    <option *ngFor="let deuda of deudasDelUsuario">
+                        {{deuda.nombre_deuda}}
+                    </option>
+                </select>
+            </p>
+
+            <p>
+                <input type="text" id="montoDeuda" name="montoDeuda" value="ValorMontoDeuda" disabled
+                    [(ngModel)]="monto">
+
+            </p>
+
+            <p>
+                <input type="text" id="montoRecargo" name="montoRecargo" value="montoRecargo" disabled
+                    [(ngModel)]="recargo">
+            </p>
+
+            <p>
+                <input type="text" id="montoTotal" name="montoTotal" value="montoTotal" disabled [(ngModel)]="total">
+            </p>
+
+            <p>
+                <select id="comprobante" name="comprobante">
+                    <option value="efectivo">Pago en Efectivo</option>
+                    <option value="spei">Comprobante SPEI</option>
+                    <option value="ticket">Ticket Bancario</option>
+                    <!-- Agrega más opciones según sea necesario -->
+                </select>
+            </p>
+
+            <p>
+                <input type="date" id="fechaCorte" name="fechaCorte" disabled [(ngModel)]="fecha_corte">
+
+            </p>
+
+            <p>
+                <input type="date" id="fechaProximoPago" name="fechaProximoPago" disabled
+                    [(ngModel)]="fechaProximoPago">
+
+            </p>
+
+            <p>
+                <input type="text" id="diasAtraso" name="diasAtraso" disabled [(ngModel)]="diasAtraso">
+
+            </p>
+
+            <p>
+                <input type="text" id="periodicidad" name="periodicidad" disabled [(ngModel)]="periodicidad">
+            </p>
+
+            <p>
+                <input type="file" (change)="handleInputFile($event)" accept="image/*" id="fileInput"
+                    style="display: none;">
+                <button class="boton-verde" onclick="document.getElementById('fileInput').click()">Cargar
+                    Comprobante</button>
+            </p>
+
+            <p>
+                <button class="boton-verde" (click)="pagarDeudaOrdinaria()">Pagar</button>
+            </p>
+
+        </form>
+
+        <div class="imagen-cont">
+
+        </div>
+
+        <div>
+
+            <div>
+                <div class="imagen">
+                    <img style="margin-right: 100px;" [src]="imagenSeleccionada" alt="Imagen seleccionada"
+                        *ngIf="imagenSeleccionada" width="270" height="270">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>

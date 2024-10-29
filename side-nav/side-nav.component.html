@@ -1,0 +1,40 @@
+
+<head>
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+</head>
+
+<div *ngIf="shouldRun" class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+  <mat-toolbar color="black" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h2><img src="./assets/logo2.png" id="logo"><img></h2>
+    <a><h2 class="example-app-name"></h2><h6>administrador</h6></a>
+    <h2><img src="./assets/usuario.png" id="usuario"><img></h2>
+  </mat-toolbar>
+   
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <mat-expansion-panel  [class.mat-elevation-z0]="true">
+          <mat-expansion-panel-header [routerLink]="Nav.route" *ngFor="let Nav of fillerNav" class="opciones" >
+            <mat-icon >{{Nav.icon}}</mat-icon>
+            {{Nav.name}}
+          </mat-expansion-panel-header>
+          <mat-nav-list> 
+            <mat-list-item routerLink="#">
+                <mat-icon>apple</mat-icon><span>iOS</span>
+            </mat-list-item>
+            <mat-list-item routerLink="#">
+                <mat-icon>android</mat-icon><span>Android</span>
+            </mat-list-item>
+        </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-sidenav>
+  
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+  <div *ngIf="!shouldRun">Please open on Stackblitz to see result</div>

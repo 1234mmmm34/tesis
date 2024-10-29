@@ -1,0 +1,188 @@
+<div class="top">
+  <h2 class="titulo">Grupos</h2>
+</div>
+
+<div>
+
+  <app-loading-spinner></app-loading-spinner>
+
+  <span>Con un grupo de personas, puedes gestionar de una manera más rápida y sencilla las acciones en tu comunidad,
+    como enviar mensajes masivos, fijar acuerdos y deudas para una cantidad de personas previamente seleccionadas con un
+    solo click,
+    entre otras cosas: agiliza tu trabajo y ahorra tiempo.</span>
+
+
+  <div id="sidenav" class="sidenav">
+    <label>Mis grupos</label>
+    <ul *ngFor="let grupo of Grupos">
+      <li id="lista"><a (click)="ConsultarGrupo(grupo.id_grupo)" (click)="ConsultarMiembros(grupo.id_grupo)">{{grupo.nombre}}
+        <mat-icon id="delete-button" style="font-size:large;" (click)="EliminarGrupo(grupo.id_grupo, grupo.nombre)">delete</mat-icon></a>
+      </li>
+    </ul>
+  </div>
+
+
+
+  <div id="agregar" *ngIf="!mostrarEditar">
+
+    <form id="formCrear" class="Formulario" (ngSubmit)="AgregarGrupos()">
+      <label>Crear grupo</label>
+      <p>
+        <input type="text" class="letras" name="nombre" placeholder="nombre del grupo" style="text-align: center;"
+          [(ngModel)]="grupo.nombre">
+      </p>
+      <p>
+        <select id="tipoUsuario" style="text-align: center;" name="usuarios" [(ngModel)]="grupo.usuarios">
+          <option [ngValue]=2 [disabled]="true">-- Habilitar a --</option>
+          <option value=0>Todos</option>
+          <option value=1>Solo yo</option>
+        </select>
+
+      </p>
+      <p>
+        <textarea id="descripcion" name="descripcion" placeholder="descripcion" [(ngModel)]="grupo.descripcion"
+          maxlength="200"></textarea>
+      </p>
+
+      <p class="botones-container">
+        <button class="boton">Agregar</button>
+      </p>
+
+    </form>
+
+  </div>
+
+  <div id="editar" *ngIf="mostrarEditar">
+
+    <div id="div-editar">
+
+      <form id="formCrear" class="Formulario" (ngSubmit)="EditarGrupo()" style="flex:1;">
+        <label>Ver grupo</label>
+        <p>
+          <input type="text" class="letras" name="nombre" placeholder="nombre del grupo" style="text-align: center;"
+            [(ngModel)]="grupo.nombre">
+        </p>
+        <p>
+          <select id="tipoUsuario" style="text-align: center;" name="usuarios" [(ngModel)]="grupo.usuarios">
+            <option [ngValue]=2 [disabled]="true">-- Habilitar a --</option>
+            <option value=0>Todos</option>
+            <option value=1>Solo yo</option>
+          </select>
+
+        </p>
+        <p>
+          <textarea id="descripcion" name="descripcion" placeholder="descripcion" [(ngModel)]="grupo.descripcion"
+            maxlength="200"></textarea>
+        </p>
+
+        <p>
+          <label for="modal" style="margin-left: 90px;" (click)="ConsultarUsuarios()"><a>Ver miembros</a></label>
+        </p>
+
+        <p class="botones-container">
+          <button class="boton">Editar</button>
+        </p>
+
+        <a id="a-registrar" (click)="MostrarRegistro()">Registrar un grupo</a>
+
+      </form>
+
+
+      <table width="320px" style="min-height: 20px; max-height: 320px;" *ngIf="miembros.length>0">
+        <thead>
+          <tr tr mat-row>
+            <th scope="col" width="200px">Miembros</th>
+            <th scope="col" width="20px">Borrar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let miembro of miembros" style="height: 20px;">
+            <td style=" font: 1em sans-serif;">{{miembro.nombre}} {{miembro.apellido_pat}} {{miembro.apellido_mat}}</td>
+            <td id="td-view">
+              <button type="button" id="view-button">
+                <mat-icon style="font-size:x-large; margin-right: 22px;" (click)="EliminarMiembro(miembro.id, miembro.nombre)">delete</mat-icon>
+              </button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="no-miembros" *ngIf="miembros.length==0">
+        <p><b>No hay miembros activos, agrega al menos uno a tu grupo</b></p>
+      </div>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+  <input type="checkbox" id="modal">
+  <label for="modal" class="modal-background"></label>
+
+
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Agregar miembros</h3>
+
+      <label for="modal" (click)="CerrarModal()">
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC"
+          width="16" height="16" alt="">
+      </label>
+
+
+      <form>
+        <mat-form-field appearance="outline" [style.width.px]=327>
+          <mat-label>
+            Buscar usuario
+          </mat-label>
+          <input id="usuarios" formControlName="employee" matInput type="text" [matAutocomplete]="auto" 
+            [(ngModel)]="filtroUsuarios" />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let usuario of usuarios |  filtroUsuarios: 'nombre': filtroUsuarios"
+              [value]="usuario.id_persona" (click)="onOptionSelected(usuario)"
+              (matAutocompleteOptionSelected)="onOptionSelected(usuario)">
+              {{usuario.nombre}} {{usuario.apellido_pat}} {{usuario.apellido_mat}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+
+      <div>
+
+
+      </div>
+
+      <div id="usuario-selecc">
+        <ul class="tags">
+          <li *ngFor="let seleccion of seleccionados"><a class="tag"
+              (click)="QuitarSeleccion(seleccion)">{{seleccion.nombre}} {{seleccion.apellido_pat}}</a></li>
+        </ul>
+      </div>
+
+      <p class="botones-container" *ngIf="seleccionados.length>0">
+        <button class="boton" (click)="AgregarMiembros()">Agregar</button>
+      </p>
+
+
+    </div>
+
+
+  </div>
+
+  <!---                               FINAL MODAL                                  -->
+
+
+
+
+
+</div>

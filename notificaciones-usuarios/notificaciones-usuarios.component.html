@@ -1,0 +1,110 @@
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<body> 
+
+    <app-loading-spinner></app-loading-spinner>
+
+    <div>
+        <h2 class="titulo">Notificaciones</h2>
+        <p id="descripcion">las notificaciones son una herramienta clave para mantener a una comunidad informada, comprometida y
+            cohesionada. </p>
+    </div>
+
+    <hr> 
+ 
+
+    <div class="contenedor1"  *ngIf="mostrarGrid">
+        <div id="buscar"> 
+
+            <input type="text" name="filtrar" placeholder="buscar" [(ngModel)]="filtroNotificaciones">
+
+            <!--
+            <div class="select-container">
+                <select id="tipoNotificacion" (change)="onChange($event)">
+                    <option [ngValue]=2 [disabled]="true">-- tipo de notificación --</option>
+                    <option value="2">Todos</option>
+                    <option value="0">General</option>
+                    <option value="1">Individual</option>
+                </select>
+
+
+            </div>
+-->
+        </div>
+
+        <div class="contenedor2">
+
+            <table class="table" width="70%">
+                <thead>
+                    <tr> 
+
+                        <th scope="col" width="200px" style=" font: 1em sans-serif;">Asunto</th>
+                        <th scope="col">Detalles</th>
+                        <th scope="col" style="text-align:center;width:200px;">
+                            Acciones
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tr mat-row matRowDef="columns: displayedcolumns;"
+                        *ngFor="let notificacion of notificaciones1 | filtroNotificaciones: 'asunto': filtroNotificaciones">
+                        <td style=" font: 1em sans-serif;">{{ notificacion.asunto }}</td>
+                        <td>{{ notificacion.mensaje }}</td>
+                        <td id="td-view">
+
+                            <button type="button" id="view-button">
+                                <mat-icon style="font-size:medium;">visibility</mat-icon>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div> 
+
+        <div class="pages">
+            <mat-paginator [length]="notificaciones.length" [pageSize]="verdaderoRango"
+                [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="pageChanged($event)">
+            </mat-paginator>
+        </div>
+
+</div>
+</body>
+
+
+<!--
+
+<body>
+    <div class="container">
+        <h2 class="titulo">Notificaciones</h2>
+
+
+        <div class="select-container">
+            <label for="tipoNotificacion">Tipo de Notificación:</label>
+            <select id="tipoNotificacion" (change)="filtrarPorTipo($event)">
+                <option value="General">General</option>
+                <option value="Individual">Individual</option>
+            </select>
+        </div>
+
+        <ul class="acuerdos-lista">
+            <li *ngFor="let notificacion of notificaciones">
+                <div class="acuerdo-info">
+                    <h3>ID Notificación: {{ notificacion.id_notificacion }} </h3>
+                    <h3>Asunto: {{ notificacion.asunto }}</h3>
+                    <h3>Mensaje:</h3>
+                    <p>{{ notificacion.mensaje }}</p>
+                    <p class="remitente">ID Persona Destinatario: {{ notificacion.id_destinatario }}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+
+
+-->

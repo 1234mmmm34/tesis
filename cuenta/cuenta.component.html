@@ -1,0 +1,66 @@
+<body [ngClass]="{'dark-theme': darkModeActive}">
+
+  <app-loading-spinner></app-loading-spinner>
+
+
+  <div class="top">
+    <h2 class="titulo">Mi cuenta</h2>
+  </div>
+
+
+  <div *ngIf="mostrarGrid" style="height: 120%;" class="tema">
+
+    <div class="sidenav tema">
+
+      <div>
+
+
+        <h2 id="deuda-titulo" style="text-transform: capitalize; margin-top: 20px; text-align: center; font-size: medium;">{{nombre}} {{apellido_pat}} {{apellido_mat}}</h2>
+
+        <div class="imagen2" style="text-align: center;">
+          <img [src]="imagenSeleccionada" alt="Imagen seleccionada" *ngIf="imagenSeleccionada" class="perfil" style="border-radius: 50%;">
+        </div>
+
+        <h2 style="text-align: center; font-size:small;">{{correo}}</h2>
+        <h2 style="text-align: center; font-size:small;">{{tipo_usuario}}</h2>
+
+  
+        <h2 style="text-transform: capitalize; text-align: center; font-size:small; margin-top: 17px;">{{comunidad}}</h2>
+        <h2 style=" text-align: center; font-size:small; margin-top: 15px;">{{fecha_nacimiento}}</h2>
+
+
+
+
+        <!--empieza-->
+        <div class="menu">
+          <div *ngFor="let menuItem of menuItems; let i = index" class="menu-item">
+            <div class="menu-title" (click)="toggleMenu(i)" style="height: 50px;">
+              <mat-icon style="margin-left: 20px;">{{ menuItem.icon }}</mat-icon><p style="margin-left: 20px; padding-top: 10px;">{{ menuItem.title }}</p>
+              <span class="arrow"><mat-icon>keyboard_arrow_down</mat-icon></span>
+            </div>
+
+            <div *ngIf="activeIndex === i" class="submenu">
+              <ul>
+                <li *ngFor="let subItem of menuItem.subItems;" [routerLink]="menuItem.route">{{ subItem }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!--termina-->
+      </div>
+    </div>
+
+  
+
+
+
+  <div class="contenedor tema">
+    <router-outlet></router-outlet>
+
+
+  </div>
+
+  </div>
+
+</body>

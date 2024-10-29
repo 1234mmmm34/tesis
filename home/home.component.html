@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
+
+  
+</head> 
+
+<body>
+
+    <app-loading-spinner></app-loading-spinner>
+
+   
+
+
+    <div id="grid"  *ngIf="mostrarGrid">
+
+        <div class="columna2">
+
+            <div id="header">
+                <h2 class="titulo">¡Hola de nuevo!, {{nombre}}</h2>
+                <p id="descripcion">Te mostramos un resúmen del mes de {{meses[mes]}} </p>
+            </div>
+            <hr>
+            <div style="display: inline-block; width: 500px;">
+                <button id="conexion" class="button-rojo"></button>
+                <p style="display: inline-block;"> {{conexion}} a panel de acceso</p>
+            </div>
+
+            <p style="padding-left: 50px; padding-top: 20px; font: 1em sans-serif; font-weight: bold;">Últimos accesos a
+                la comunidad:</p>
+
+            <div id="cdiv3">
+
+
+                <table class="table" width="100%">
+                    <thead>
+                        <tr>
+
+                            <th scope="col" width="50px" style=" font: 1em sans-serif;">#</th>
+                            <th scope="col">Fecha y hora</th>
+                            <th scope="col">Usuario</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr tr mat-row matRowDef="columns: displayedcolumns;" *ngFor="let entrada of entradas"
+                            height="40px">
+                            <td style=" font: 1em sans-serif;">{{entrada.id_entrada}}</td>
+                            <td>{{entrada.fecha}}</td>
+                            <td>{{entrada.nombre}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button class="boton"> <mat-icon>picture_as_pdf</mat-icon> Descargar reporte</button>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="columna1">
+
+            <div id="cuadro1" style="height: 60px; display: flex; padding-top: 10px; padding-left: 10px;">
+
+                <!--
+                <p style="margin-right: 10px; margin-top: 10px; margin-left: 10px;">Filtrar desde  </p>
+                <input type="text" class="textb" id="fechaInicio" style="margin-right: 10px; text-align: center;"
+                placeholder="fecha de inicio" onfocus="(this.type='date')" />
+                <p style="margin-top: 10px; margin-right: 10px;">hasta  </p>
+                <input type="text" class="textb" id="fechaFinal" style="text-align: center;"
+                placeholder="fecha final" onfocus="(this.type='date')" />
+
+                -->
+                <p style="margin-right: 10px; margin-top: 10px; margin-left: 10px;">Filtrar con el mes de </p>
+
+                <select [(ngModel)]="mesSeleccionado" style="height: 30px; display: flex; padding-top: 10px; padding-left: 10px;"  (change)="obtenerMesSeleccionado()">
+                    <option *ngFor="let mes of meses; let i = index" [value]="i + 1">{{ mes }}</option>
+                </select>
+
+
+            </div>
+
+
+            <div id="cdiv1">
+                <div id="cdiv1c1">
+                    <div class="cuadro">
+                        <p>Proyección de ingresos para este mes (brutos)</p>
+                        <p style="padding-left: 20px; color: green; font-weight: 700;">${{(proyeccion_ingresos).toFixed(2) |
+                            number:'1.2-2'}} MXN (+)</p>
+                        <!--   <p style="width: 50px; margin-left: 160px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="21.5 10 21.5 5 16.5 5" fill="none" stroke="#000" stroke-miterlimit="10"/><polyline points="21.5 5 13 13.5 9 9.5 2 16.5" fill="none" stroke="#000" stroke-miterlimit="10"/></svg></p> -->
+                    </div>
+                </div>
+                <div id="cdiv1c2">
+                    <div class="cuadro">
+                        <p>Ingresos totales para este mes (brutos)</p>
+                        <p style="padding-left: 20px; color: green; font-weight: 700;">${{(ingresos).toFixed(2) |
+                            number:'1.2-2'}} MXN</p>
+                        <!--   <p style="width: 50px; margin-left: 160px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="21.5 10 21.5 5 16.5 5" fill="none" stroke="#000" stroke-miterlimit="10"/><polyline points="21.5 5 13 13.5 9 9.5 2 16.5" fill="none" stroke="#000" stroke-miterlimit="10"/></svg></p> -->
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="cuadro1">
+
+                <div style="display: flex;">
+                    <p>Egresos totales al día de hoy (brutos)</p>
+                </div>
+
+                <div>
+                    <p id="cuentas_cobrar">${{(egresos).toFixed(2) | number:'1.2-2'}} MXN</p>
+                </div>
+
+            </div>
+
+
+            <div id="cuadro1">
+
+                <div style="display: flex;">
+                    <p>Monto total en cuentas por cobrar</p>
+                    <button class="help-button" (mouseover)="showHelp=true" (mouseout)="showHelp=false">?</button>
+                    <span *ngIf="showHelp" class="help-message">Se define como la suma de las deudas con sus respectivos
+                        recargos </span>
+                </div>
+
+                <div>
+                    <p id="cuentas_cobrar">${{(cuenta_cobrar).toFixed(2) | number:'1.2-2'}} MXN</p>
+                </div>
+
+            </div>
+
+        
+
+
+
+
+            <div id="cdiv2">
+                <canvasjs-chart [options]="chartOptions2" [styles]="{width: '85%', height:'376px'}"></canvasjs-chart>
+            </div>
+        
+
+        </div>
+
+
+        <div class="columna">
+            <div id="div1">
+                <canvasjs-chart [options]="chartOptions" [styles]="{width: '90%', height:'267px'}"></canvasjs-chart>
+            </div>
+
+            <div id="div2">
+                <canvasjs-chart [options]="chartOptions1" [styles]="{width: '90%', height:'267px'}"></canvasjs-chart>
+            </div>
+
+
+        </div>
+
+ 
+    </div>
+
+</body>
+
+</html>

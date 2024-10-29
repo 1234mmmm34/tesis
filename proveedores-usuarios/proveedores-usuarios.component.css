@@ -1,0 +1,34 @@
+.container {
+    width: 80%;
+    margin: 20px auto;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+    padding: 20px;
+    background-color: #daffc4;
+}
+
+.titulo {
+    text-align: center;
+    color: #333;
+}
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tabla th,
+.tabla td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.tabla th {
+    background-color: #4CAF50;
+    color: white;
+}

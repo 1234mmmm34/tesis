@@ -1,0 +1,43 @@
+<div *ngIf="HistorialUsuario.length > 0; else noData">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre Persona</th>
+          <th>Lote</th>
+          <th>Deuda</th>
+          <th>Tipo Deuda</th>
+          <th>Monto</th>
+          <th>Recargo</th>
+          <th>Días Gracia</th>
+          <th>Estado</th>
+          <th>Periodicidad</th>
+          <th>Periodo</th>
+          <th>Comprobante</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let deuda of HistorialUsuario">
+          <td>{{ deuda.id }}</td>
+          <td>{{ deuda.nombre_persona }}</td>
+          <td>{{ deuda.lote }}</td>
+          <td>{{ deuda.nombre_deuda }}</td>
+          <td>{{ deuda.tipo_deuda }}</td>
+          <td>{{ deuda.monto | currency:'MXN'}}</td>
+          <td>{{ deuda.recargo | currency:'MXN'}}</td>
+          <td>{{ deuda.dias_gracia }}</td>
+          <td>{{ deuda.estado }}</td>
+          <td>{{ deuda.periodicidad }}</td>
+          <td>{{ deuda.periodo}}</td>
+          <td>
+            <button (click)="verComprobante(deuda.id)" class="comprobante-button">Ver Comprobante</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <ng-template #noData>
+    <p>No hay datos disponibles.</p>
+  </ng-template>
+  

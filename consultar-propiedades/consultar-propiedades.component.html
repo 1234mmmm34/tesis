@@ -1,0 +1,273 @@
+<head>
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+</head>
+
+<body>
+    <div class="contenedor1">
+        <h2 class="titulo">Consultar propiedades</h2>
+        <form>
+            <input type="text" class="form-control" id="buscar" name="filtrar" placeholder="buscar">
+        </form>
+        <div class="contenedor">
+
+            <div class="form">
+
+                <table id="example" class="table" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Propiedades</th>
+                            <th style="display: none;">id_lote</th>
+                            <th style="display: none;">id_fraccionamiento</th>
+                            <th style="display: none;">descripcion</th>
+                            <th style="display: none;">tipo</th>
+                            <th style="display: none;">direccion</th>
+                            <th style="display: none;">nombre</th>
+                            <th style="display: none;">nombre_renta</th>
+                            <th style="display: none;">id_propietario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr mat-row *ngFor="let lote of lotes;" matRowDef="columns: displayedcolumns;"
+                            (click)="edit(lote)" (click)="fetchDataUserPropierty(lote.id_propietario)"
+                            (click)="fetchDataPersonasLote(lote.id_propietario)">
+                            <td>{{lote.descripcion}}</td>
+                            <th style="display: none;">{{lote.id_lote}}</th>
+                            <th style="display: none;">{{lote.id_fraccionamiento}}</th>
+                            <th style="display: none;">{{lote.descripcion}}</th>
+                            <th style="display: none;">{{lote.tipo}}</th>
+                            <th style="display: none;">{{lote.direccion}}</th>
+                            <th style="display: none;">{{lote.nombre}}</th>
+                            <th style="display: none;">{{lote.nombre_renta}}</th>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+        <div id="informacion" style="top: 40px;">
+
+            <div class="form">
+
+                <form id="formCrear" class="Formulario" #form="ngForm" [formGroup]="UserGroup">
+                    <label for="nombre">lote #</label>
+                    <input type="text" formControlName="id_lote" name="id_lote" [(ngModel)]="lote.id_lote">
+
+                    <label for="nombre">Descripción</label>
+                    <input type="text" formControlName="descripcion" name="descripcion" [(ngModel)]="lote.descripcion">
+
+                    <label for="nombre">Tipo</label>
+                    <input type="text" formControlName="tipo" name="tipo" [(ngModel)]="lote.tipo">
+
+                    <label for="nombre">Direccion</label>
+                    <input type="text" formControlName="direccion" name="direccion" [(ngModel)]="lote.direccion">
+
+                    <label for="nombre">Propietario</label>
+                    <input type="text" formControlName="nombre" name="nombre" [(ngModel)]="lote.nombre">
+
+                    <label for="nombre">Arrendatario</label>
+                    <input type="text" formControlName="nombre_renta" name="nombre_renta"
+                        [(ngModel)]="lote.nombre_renta">
+
+                    <p>
+                        <button class="boton-verde" onclick="myFunction()">Eliminar</button>
+                        <button class="boton-verde" onclick="myFunction()">Actualizar</button>
+                    </p>
+
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="tabs" style="padding-top: 90px; padding-bottom: 20px;">
+        <ul class="tabs-thumbs">
+            <li class="tabs-thumb"><a class="eti">Propietario</a></li>
+            <li class="tabs-thumb"><a class="eti">Inquilinos</a></li>
+        </ul>
+
+
+        <ul class="tabs-panels">
+            <li class="tabs-panel">
+
+                <!--COMIENZO PANEL-->
+
+                <div id="contenedor2">
+
+                    <form id="formCrear" class="Formulario" #form1="ngForm" [formGroup]="UserGroup1"
+                        style="width: 1000px;">
+
+                        <label for="nombre">Nombre</label>
+                        <input type="text" formControlName="nombre" name="nombre" [(ngModel)]="usuario.nombre">
+
+                        <label for="idTesorero">Teléfono: </label>
+                        <input type="text" id="telefono" formControlName="telefono" name="telefono"
+                            [(ngModel)]="usuario.telefono">
+
+                        <label for="correo">Correo: </label>
+                        <input type="email" id="correo" name="correo" formControlName="correo"
+                            [(ngModel)]="usuario.correo" required ngModel>
+
+                        <!--
+                        <button class="boton-verde" onclick="myFunction()"
+                        style="margin-left: 20px;">Eliminar</button>
+                            -->
+
+
+                    </form>
+                </div>
+
+            </li>
+            <li class="tabs-panel">
+
+                <!--COMIENZO PANEL-->
+
+                <div class="contenedor2">
+
+                    <div class="form">
+
+                        <table id="example" class="table" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th style="display: none;">id_usuario_lote</th>
+                                    <th style="display: none;">codigo_acceso</th>
+                                    <th style="display: none;">intercomunicador</th>
+                                    <th style="display: none;">id_usuario</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr mat-row *ngFor="let inquilino of inquilinos; let j=index"
+                                    matRowDef="columns: displayedcolumns;" (click)="editInquilinos(inquilino)">
+                                    <th style="display: none;">{{inquilino.id_usuario_lote}}</th>
+                                    <th style="display: none;">{{inquilino.codigo_acceso}}</th>
+                                    <th style="display: none;">{{inquilino.intercomunicador}}</th>
+                                    <th style="display: none;">{{inquilino.id_usuario}}</th>
+                                    <th>{{inquilino.nombre}}</th>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+                </div>
+
+                <!--
+<p style="padding-top: 270px; padding-left: 50px;">
+    <button class="boton-verde" onclick="myFunction()">Editar</button>
+    <button class="boton-verde" onclick="myFunction()" style="margin-left: 10px;">Editar</button>
+</p>
+
+
+-->
+
+                <input type="checkbox" id="modal">
+                <label for="modal" class="boton-verde"
+                    style="margin-left: 370px; position: absolute; top: 70px; width: 100px; height: 40px; text-align: center;">+
+                    Nuevo</label>
+                <label for="modal" class="modal-background"></label>
+                <div class="modal" style="height: 300px; width: 300px;">
+                    <div class="modal-header">
+                        <h3>Agregar inquilino</h3>
+                        <label for="modal">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC"
+                                width="16" height="16" alt="">
+                        </label>
+                    </div>
+                    <div class="contenedor" style="position: absolute; top: 80px;">
+
+                        <div class="form" style="width: 700px;">
+
+                            <form id="formCrear" class="Formulario" #form2="ngForm" [formGroup]="UserGroup2">
+                                <p>
+                                    <input type="text" formControlName="nombre" name="nombre" placeholder="Nombre"
+                                        [(ngModel)]="inquilino.nombre">
+                                </p>
+                                <p>
+                                    <input type="text" id="codigo_acceso" formControlName="codigo_acceso"
+                                        name="codigo_acceso" placeholder="Codigo de acceso"
+                                        [(ngModel)]="inquilino.codigo_acceso">
+                                </p>
+                                <p>
+                                    <input type="text" id="intercomunicador" formControlName="intercomunicador"
+                                        name="intercomunicador" placeholder="Intercomunicador"
+                                        [(ngModel)]="inquilino.intercomunicador">
+                                </p>
+
+                            </form>
+                            <div class="botones-container">
+                                <button class="boton-verde" style="position: absolute; left: 50px;"
+                                    (click)="agregar_inquilino(form2.value)">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+ 
+
+
+
+                <div id="informacion2" style="top: 70px;">
+                    <div class="form">
+
+                        <form id="formCrear" class="Formulario" #form2="ngForm" [formGroup]="UserGroup2"
+                            style="width: 400px;">
+
+                            <label for="nombre">Inquilino #</label>
+                            <input type="text" formControlName="id_usuario_lote" name="id_usuario_lote"
+                                [(ngModel)]="inquilino.id_usuario_lote">
+
+                            <label for="nombre">Nombre</label>
+                            <input type="text" formControlName="nombre" name="nombre" [(ngModel)]="inquilino.nombre">
+
+                            <label for="nombre">Codigo de acceso</label>
+                            <input type="text" formControlName="codigo_acceso" name="codigo_acceso"
+                                [(ngModel)]="inquilino.codigo_acceso">
+
+                            <label for="nombre">Intercomunicador</label>
+                            <input type="text" formControlName="intercomunicador" name="intercomunicador"
+                                [(ngModel)]="inquilino.intercomunicador">
+
+                            <p style="display: flex;
+                                flex-direction: column; padding-top: 20px;">
+                                <button class="boton-verde" onclick="myFunction()"
+                                    style="margin-left: 20px;">Actualizar</button>
+                                <button class="boton-verde"
+                                    (click)="eliminar_inquilino(inquilino.id_usuario_lote, inquilino.codigo_acceso)"
+                                    style="margin-left: 20px;">Eliminar</button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+
+            </li>
+        </ul>
+    </div> 
+
+
+
+
+
+
+
+
+
+</body>

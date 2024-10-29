@@ -1,0 +1,150 @@
+<body>
+
+  <app-loading-spinner></app-loading-spinner>
+  
+  <div class="top">
+    <h2 class="titulo">Controlador</h2>
+    <p id="descripcion">Un sistema de control de accesos es aquel que gestiona la entrada y salida de usuarios de un
+      área, en este caso, de tu comunidad. Para una mejor administración de tu comunidad, agrega un sistema. </p>
+
+
+  </div>
+
+ 
+  <div class="sidenav">
+
+    <p> <label for="modal" class="boton-agregar" style="font-weight: 900;" (click)="limpiar()">+</label> Agregar nuevo controlador</p>
+
+    <div id="sidenav">
+      <label>Mis controladores</label>
+      <ul  *ngFor="let controlador of controladores">
+        <li id="lista" (click)="edit(controlador)"><a>{{controlador.nombre}}
+          <mat-icon id="delete-button" style="font-size:large;" (click)="Eliminar_fraccionamiento(controlador.id_controlador)">delete</mat-icon></a>
+        </li>
+      </ul>
+    </div>
+
+  </div> 
+
+
+
+  <div class="contenedor">
+
+    <label style="display: inline-block;">
+      <button id="conexion" style="display: inline-block;"></button><p style="display: inline-block;"> conectado a {{nombreControlador}} con {{ipControlador}}</p>
+    </label>
+
+    <img src="controlador.png" alt="description" id="img-controlador">
+
+    <p id="mensaje-bienvenida">¡Bienvenido al panel de controladores! selecciona o agrega un nuevo controlador</p>
+
+ 
+  </div>
+
+
+
+
+  <!-------                              MODAL                          -->
+
+
+  <input type="checkbox" id="modal">
+
+  <label for="modal" class="modal-background"></label>
+
+
+
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Agregar controlador</h3> 
+
+      <label for="modal">
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC"
+          width="16" height="16" alt="">
+      </label>
+
+
+ 
+    </div>
+
+
+    <div class="form">
+
+
+
+      <form id="formCrear" class="Formulario" #form="ngForm" [formGroup]="UserGroup">
+
+        <input style="display: none;" [(ngModel)]="controlador.id_controlador" formControlName="id_controlador" name="id_controlador">
+
+        <select class="modelo-controlador" 
+          style="width: 270px; height: 30px; text-align: center;" name="modelo">
+          <option value="0" disabled selected>--Selecciona un modelo de controlador--</option>
+          <option value="">hikvision ds-k2602</option>
+        </select>
+ 
+        <a [href]="'mailto:destinatario@example.com?subject='" style="font-size: smaller;" id="enviar_correo">
+          El modelo de mi controlador no se encuentra en la lista
+        </a>
+ 
+        <div class="help-container">
+
+          <input type="text" formControlName="nombre" name="nombre"
+          placeholder="nombre de pila"  [(ngModel)]="controlador.nombre">
+
+        <button class="help-button" (mouseover)="showHelp=true" (mouseout)="showHelp=false">?</button>
+          <span *ngIf="showHelp" class="help-message">Agrega un nombre a tu controlador para una identificación más rápida</span>
+        </div>
+
+
+        <!--
+                <input type="text" formControlName="ip" name="ip" [(ngModel)]="controlador.ip"
+          placeholder="ip pública del controlador">
+        -->
+
+        <div class="ip">
+          <input type="number" [(ngModel)]="controlador.oct1" formControlName="oct1" name="oct1" class="octeto" placeholder="127" min="1" max="999" oninput="validity.valid||(value='');">
+          <label class="punto">.</label>
+          <input type="number" [(ngModel)]="controlador.oct2" formControlName="oct2" name="oct2" class="octeto" placeholder="0" min="0" max="999" oninput="validity.valid||(value='');">
+          <label class="punto">.</label>
+          <input type="number" [(ngModel)]="controlador.oct3" formControlName="oct3" name="oct3" class="octeto" placeholder="0" min="0" max="999" oninput="validity.valid||(value='');">
+          <label class="punto">.</label>
+          <input type="number" [(ngModel)]="controlador.oct4" formControlName="oct4" name="oct4" class="octeto" placeholder="1" min="0" max="999" oninput="validity.valid||(value='');">
+        </div>
+
+
+       
+
+        <input type="number" id="port" formControlName="port" name="port" [(ngModel)]="controlador.port" min="1" max="65535" oninput="validity.valid||(value='');"
+          placeholder="puerto">
+
+
+        <input type="text" id="user" formControlName="user" name="user" [(ngModel)]="controlador.user"
+          placeholder="usuario">
+
+
+        <input type="text" id="password" formControlName="password" name="password" [(ngModel)]="controlador.password"
+          placeholder="contraseña">
+
+       
+
+        <div class="botones-container" *ngIf="!editar">
+          <button class="boton" (click)="Agregar_fraccionamiento(form.value)" onclick="myFunction()">Agregar</button>
+        </div>
+
+        <div class="botones-container" *ngIf="editar">
+          <button class="boton" (click)="actualizarHikvision(form.value)" onclick="myFunction()">Guardar</button>
+        </div>
+      </form>
+    </div>
+
+
+
+  </div>
+
+  <!---                               FINAL MODAL                                  -->
+
+
+
+
+
+</body>

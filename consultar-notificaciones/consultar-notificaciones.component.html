@@ -1,0 +1,189 @@
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<body>
+
+    
+    <app-loading-spinner></app-loading-spinner>
+
+    <div>
+        <h2 class="titulo">Notificaciones</h2>
+        <p id="descripcion">las notificaciones son una herramienta clave para mantener a una comunidad informada,
+            comprometida y
+            cohesionada. </p>
+    </div>
+
+    <hr>
+
+
+    <div class="contenedor1" *ngIf="mostrarGrid">
+        <div id="buscar">
+
+            <input type="text" name="filtrar" placeholder="buscar" [(ngModel)]="filtroNotificaciones">
+
+
+            <div id="buscar1">
+                <span>Filtrar por: </span>
+                <select id="tipoNotificacion" (change)="onChange($event)">
+                    <option [ngValue]=2 [disabled]="true">-- Grupo de destinatarios --</option>
+                    <option value="-1">Todos</option>
+                    <option value="0">General</option>
+                    <option value="1">Individual</option>
+                </select>
+
+
+            </div>
+
+            <div style="display: flex; align-items: center; margin-left: 65%;">
+                <mat-icon style="font-size:xx-large; padding-top: 13px; width: 24%;height: 100%;">settings</mat-icon>
+                <label for="modal" class="boton" style="margin-right: 10px;">Agregar</label>
+            </div>
+
+
+
+
+        </div>
+
+        <div class="contenedor2" *ngIf="this.notificaciones1.length>0; else noencontrado"> 
+
+            <table class="table" width="100%">
+                <thead>
+                    <tr>
+
+                        <th scope="col" class="asunto" width="300px">Asunto</th>
+                        <th scope="col"></th>
+                        <th scope="col">Detalles</th>
+                        <th scope="col">Destinatario</th>
+                        <th scope="col" style="text-align:center;width:200px;">
+                            Acciones y ver más
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tr mat-row matRowDef="columns: displayedcolumns;"
+                        *ngFor="let notificacion of notificaciones1 | filtroNotificaciones: 'asunto': filtroNotificaciones">
+                        <td class="asunto" style=" font: 1em sans-serif;">{{ notificacion.asunto }}</td>
+                        <td id="nuevonot">
+                            <span class="nuevo" *ngIf="notificacion.visualizacion === 1">nuevo</span>
+                        </td>
+                        <td>{{ notificacion.mensaje }}</td>
+                        <td>{{ notificacion.id_destinatario === 0 ? 'General' : notificacion.id_destinatario }}</td>
+                        <td id="td-view">
+
+                            <button type="button" id="view-button">
+                                <mat-icon style="font-size:medium;">visibility</mat-icon>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pages">
+                <mat-paginator [length]="notificaciones.length" [pageSize]="verdaderoRango"
+                    [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="pageChanged($event)">
+                </mat-paginator>
+            </div>
+
+
+        </div>
+
+        <ng-template #noencontrado>
+            <div class="div-noen">
+                <img class="noencontrado" src="./notfound.png" alt="hola">
+     
+            </div>
+
+        </ng-template>
+
+
+
+
+        <!-------                              MODAL                          -->
+
+
+        <input type="checkbox" id="modal">
+
+        <label for="modal" class="modal-background"></label>
+
+
+
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Agregar notificación</h3>
+
+                <label for="modal">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC"
+                        width="16" height="16" alt="">
+                </label>
+
+
+
+            </div>
+
+
+            <div class="form">
+
+                <!-- Formulario para agregar un nuevo acuerdo -->
+                <form id="formCrear" class="Formulario" #form="ngForm" (ngSubmit)="agregarNotificacion(form.value)">
+                    <!-- ... Otros campos del formulario ... -->
+
+                    <div class="form-group">
+                        <select id="tipo" name="tipo" required ngModel [selectedIndex]="0"
+                            (change)="consultarUsuarios()">
+                            <option value="0" disabled selected>-- tipo de notificación --</option>
+                            <option value="general">General</option>
+                            <option value="individual">Individual</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group" id="usuarios" *ngIf="mostrarDestinatario">
+                        <select id="destinatario" name="destinatario" required ngModel>
+                            <option [value]="0" disabled selected>-- Selecciona un destinatario --</option>
+                            <option *ngFor="let usuario of usuarios" [value]=usuario.id_persona>
+                                {{ usuario.nombre }} {{ usuario.apellido_pat }} {{ usuario.apellido_mat }}
+                            </option>
+                        </select>
+                    </div>
+                    
+
+
+
+
+                    <div class="form-group">
+                        <input type="text" id="asunto" name="asunto" placeholder="asunto" required ngModel>
+                    </div>
+
+
+                    <div class="form-group">
+                        <textarea id="mensaje" name="mensaje" placeholder="mensaje" required ngModel
+                            maxlength="200"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="boton" type="submit">Agregar</button>
+                    </div>
+                </form>
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <!---                               FINAL MODAL                                  -->
+
+    </div>
+
+
+</body>

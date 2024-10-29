@@ -1,0 +1,148 @@
+<body>
+  <app-loading-spinner></app-loading-spinner>
+  <div>
+    <h2 class="titulo">Gestión de egresos</h2>
+    <p id="descripcion">Registra tus egresos y toma el control de tus finanzas. </p>
+  </div>
+
+  <hr>
+
+  <div class="contenedor" *ngIf="mostrarGrid">
+
+    <form id="buscar">
+      <input type="text" id="tbuscar" class="form-control" name="filtrar" placeholder="buscar">
+      <label for="modal" class="boton">Agregar</label>
+    </form>
+
+    <div class="contenedor2" *ngIf="this.egresos.length>0; else noencontrado">
+
+      <table id="example" class="table">
+        <thead>
+          <tr>
+            <th>ID Egreso</th>
+            <th>Concepto</th>
+            <th>Descripción</th>
+            <th>Proveedor</th>
+            <th>Monto</th>
+            <th>Fecha</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let egreso of egresos">
+            <td>{{ egreso.id_egreso }}</td>
+            <td>{{ egreso.concepto }}</td>
+            <td>{{ egreso.descripcion }}</td>
+            <td>{{ egreso.proveedor }}</td>
+            <td>{{ egreso.monto }}</td>
+            <td>{{ egreso.fecha }}</td>
+            <td>
+              <label for="modal" (click)="seleccionarEgreso(egreso)" style="margin-left: 10px;">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
+              </label>
+            </td>
+            <td>
+              <label (click)="eliminarEgreso(egreso.id_egreso)" style="margin-left: 20px;">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="clear"></mat-icon>
+              </label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <ng-template #noencontrado>
+      <div class="div-noen">
+          <img class="noencontrado" src="./notfound.png" alt="hola">
+
+      </div>
+
+  </ng-template>
+    <!--------------------------FINAL MODAL ------------------------------------------------>
+
+
+
+    <input type="checkbox" id="modal">
+
+    <label for="modal" class="modal-background"></label>
+
+
+
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Agregar nuevo egreso</h3>
+
+        <label for="modal">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC"
+            width="16" height="16" alt="">
+        </label>
+
+
+
+      </div>
+
+      <div class="form">
+
+        <form id="formCrear" class="Formulario" #egresoForm="ngForm" (ngSubmit)="agregarEgreso()">
+
+          <p>
+
+            <select id="proveedor" name="proveedor" [(ngModel)]="egresoModel.proveedor" required>
+              <option value="" disabled selected>-- Selecciona un proveedor --</option>
+              <option value="na">sin proveedor</option>
+              <option *ngFor="let proveedor of proveedores" [value]="proveedor.nombre">{{proveedor.id_proveedor}}-{{
+                proveedor.nombre }}</option>
+            </select>
+
+          </p>
+          <p>
+            <input type="text" id="monto" name="monto" [(ngModel)]="egresoModel.monto" required ngModel
+              placeholder="Monto (MXN)" />
+          </p>
+          <p>
+            <input type="text" id="concepto" name="concepto" [(ngModel)]="egresoModel.concepto" required
+              placeholder="Concepto">
+
+          </p>
+          <p>
+            <input type="text" class="textb" id="fechaEgreso" name="fechaEgreso" [(ngModel)]="egresoModel.fecha"
+              required ngModel placeholder="Fecha de egreso" onfocus="(this.type='date')" />
+          </p>
+          <p>
+            <textarea name="descripcion" [(ngModel)]="egresoModel.descripcion" required
+              placeholder="Descripción"></textarea>
+
+          </p>
+
+          <div style="padding-right: 340px; display: flex;">
+            <button type="submit" class="boton" style="min-width: 100px;">Agregar</button>
+            <button (click)="actualizarEgreso()" type="button" class="boton" style="min-width: 100px;">Actualizar</button>
+          </div>
+
+
+
+
+        </form>
+
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</body>

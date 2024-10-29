@@ -1,0 +1,158 @@
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@200" />
+
+
+<body>
+
+    <app-loading-spinner></app-loading-spinner>
+
+    <div>
+        <h2 class="titulo">Acuerdos</h2>
+        <p id="descripcion">promueven la comunicación efectiva, establecen normas compartidas, promueven la
+            responsabilidad y cultivan un
+            sentido de pertenencia. </p>
+
+    </div>
+    <hr>  
+
+
+    <div class="contenedor1" *ngIf="mostrarGrid">
+        <div id="buscar">
+
+  
+            <input type="text" name="filtrar" placeholder="buscar" id="buscar2" [(ngModel)]="filtroAcuerdos">
+            <input type="date" name="filtrarFecha" [(ngModel)]="filtroFecha" id="buscar1" (ngModelChange)="onFechaSeleccionada()">
+            <div style="display: flex; align-items: center; margin-left: 65%;">
+                <mat-icon style="font-size:xx-large; padding-top: 13px; width: 24%;height: 100%;">settings</mat-icon>
+                <label for="modal" class="boton" style="margin-right: 10px;">Agregar</label>
+            </div>
+
+
+        </div>
+
+        <!-- *ngIf="this.acuerdos1.length>0; else noencontrado"  -->
+ 
+        <div class="contenedor2" *ngIf="this.acuerdos1.length>0; else noencontrado">
+
+            <table class="table" width="100%">
+                <thead>
+                    <tr>
+
+                        <th scope="col" class="asunto">Asunto</th>
+                        <th scope="col">Detalles</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col" style="text-align:center;width:200px;">
+                            Acciones
+                        </th>
+                    </tr> 
+                </thead>
+                <tbody>
+                    <tr tr mat-row matRowDef="columns: displayedcolumns;"
+                        *ngFor="let acuerdo of acuerdos1 | filtroAcuerdos: 'asunto': filtroAcuerdos | filtroFecha: 'fecha': filtroFecha">
+                        <td class="asunto">{{ acuerdo.asunto }}</td>
+                        <td>{{ acuerdo.detalles }}</td>
+                        <td>{{ acuerdo.fecha }}</td>
+                        <td id="td-view">
+
+                            <button type="button" id="view-button">
+                                <mat-icon style="font-size:medium;">visibility</mat-icon>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+    
+            <div class="pages">
+                <mat-paginator [length]="acuerdos.length" [pageSize]="verdaderoRango" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="pageChanged($event)">
+                </mat-paginator>
+            </div>
+        
+        </div>
+
+    
+         
+        <ng-template #noencontrado>
+            <div class="div-noen">
+                <img class="noencontrado" src="./notfound.png" alt="hola">
+            </div>
+        </ng-template> 
+
+
+
+
+        <!--------------------------FINAL MODAL ------------------------------------------------>
+
+
+
+        <input type="checkbox" id="modal">
+
+        <label for="modal" class="modal-background"></label>
+
+
+
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Agregar acuerdo</h3>
+
+                <label for="modal">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC"
+                        width="16" height="16" alt="">
+                </label>
+
+
+
+            </div>
+
+ 
+            <div class="form">
+
+                <!-- Formulario para agregar un nuevo acuerdo -->
+                <form id="formCrear" class="Formulario" #form="ngForm" (ngSubmit)="agregarAcuerdo(form.value)">
+                    <!-- ... Otros campos del formulario ... -->
+
+                    <div class="form-group">
+                        <input type="text" id="asunto" name="asunto" placeholder="Asunto del acuerdo" ngModel required>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="detalles" name="detalles" placeholder="Detalles del acuerdo" ngModel required  maxlength="200"></textarea>
+                    </div>
+
+                    <div>
+                        <button class="boton" type="submit" style="margin-left: 30%;">Agregar</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <!------------------------------   MODAL   ---------------------------------------------->
+
+
+
+</body>
+
+
+

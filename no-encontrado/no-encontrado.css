@@ -1,0 +1,49 @@
+.imagen-esquina-superior {
+    position: absolute;
+    
+    top: 0px;
+    left: 0px;
+    padding-left: 35%;
+    padding-top: 50%;
+    background-repeat: no-repeat;
+    background-image: url(".\tela1.png");
+  }
+
+  .imagen-esquina-inferior {
+    position: absolute;
+    top: 77%;
+    right: 0px;
+    padding-left: 200px;
+    padding-bottom: 200px;
+    background-repeat: no-repeat;
+    background-image: url(".\tela3.png");
+
+    
+  }
+
+  .no_encontrado{
+    /* background-position: center center; */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(".\no_encontrado1.png");
+
+
+  }
+  
+  h4{
+    font-family: sans-serif;
+    position: absolute;
+    top: 430px;
+    left: 32%;
+    font-weight: bolder;
+    color: #181212;
+
+    background-position: center center;
+
+  }
+
+

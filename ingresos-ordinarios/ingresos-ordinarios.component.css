@@ -1,0 +1,229 @@
+body{
+  background-color: #EDFBE6;
+  margin: 0%;
+  background-position: center center;
+
+}
+
+input, p > select, textarea{
+  width: 300px; 
+  margin-bottom: 8px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #989898;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+}
+ 
+input, select{
+  width: 300px;
+  border: none;
+/*  border: 1px solid transparent; */
+
+  background-color: transparent;
+  border-bottom: 1px solid #989898;
+}
+
+#dias_gracia{
+  width: 300px;
+  border: none;
+/*  border: 1px solid transparent; */
+
+  background-color: transparent;
+  border-bottom: 1px solid #989898;
+}
+
+p > #telefono, p > #fechaNacimiento{
+  width: 300px; 
+
+  border: none;
+  /*  border: 1px solid transparent; */
+  
+    background-color: transparent;
+    border-bottom: 1px solid #989898;
+}
+
+
+.div-opciones-deuda{
+  margin-left: 15%;
+  margin-top: 10px;
+}
+
+
+.contenedor{
+  padding-top: 60px;
+  margin-left: 10%;
+
+}
+
+.mat-toolbar{
+  /*  background-color: #768650;  */
+   background-color: #575d43; 
+  }
+
+  .titulo {
+    
+    color: rgb(0, 0, 0);
+    margin-top: 30px;
+
+    margin-left: 10%;
+    
+   /* text-align: center; */
+
+  }
+   
+  
+  input, select{
+    width: 300px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    border-bottom: 1px solid #989898;
+  }
+
+  p > #telefono, p > #fechaNacimiento{
+    width: 500px; 
+    border: 1px solid transparent;
+    background-color: transparent;
+    border-bottom: 1px solid #989898;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+  }
+  
+
+  .form {
+
+    display: grid;
+    grid-gap: 1.0rem;
+
+
+ 
+  }
+
+  p{
+    display: flex;
+    flex-direction: column;
+    grid-gap: 1.0rem;
+
+  }
+  
+  .imagen-cont{
+    border-color: #000000;
+    border-width: 3px 3px 3px 3px;
+    border-style: solid;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 915px;
+    top: 135px;
+
+  }
+
+  .Formulario{
+
+    display: grid;
+    grid-gap: 1.0rem;
+
+    grid-template-columns: 1fr 1fr;
+  }
+  
+
+
+  .boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
+    padding: 10px;
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    background: #4c9c4e;
+    color: #FFFFFF;
+  }
+
+  .boton-verde:hover {
+    background: #317435;
+  }
+  
+
+  .botones-container {
+      position: absolute;
+      left: 640px;
+      top: 340px;
+    
+  }
+  
+  table, th ,td, thead, tr {
+    text-align: center;
+    width: 300px; 
+  
+  }
+  
+/*
+  .Formulario {
+
+    margin-left: 30%;
+    margin-right: 40%;
+    padding-left: 0px;
+    grid-gap: 1.25rem;
+
+    border-radius: 0% 2% 2% 0%;
+    
+    
+  }
+  */
+  select, #fechaNacimiento{
+    width: 180px;
+    height: 26px;
+  }
+  
+  
+  #telefono{
+    width: 210px;
+    height: 26px;
+  }
+  
+  #lote1{
+    display: inline-block;
+  
+  
+  }
+  
+  a {
+    flex-direction: column;
+  }
+
+.imagen{
+position: absolute;
+margin-left: 800px;
+margin-top: -300px;
+}
+ 
+.btn_imagen{
+padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    background: #4c9c4e;
+    color: #FFFFFF;
+
+    position: absolute;
+    margin-left: 840px;
+}
+
+
+

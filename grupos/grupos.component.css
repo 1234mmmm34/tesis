@@ -1,0 +1,427 @@
+ 
+.dark-theme {
+    --text-color: #fff;
+    --background-color: #696969;
+    --background-color1: #4d4b4b;
+    --mat-color: #212123;
+  }
+  
+  
+  ::placeholder,
+  input[type="date"],
+  .top>.titulo {
+    color: var(--text-color) !important;
+  }
+  
+  .tema {
+    background: var(--background-color);
+  }
+  
+  .top {
+    background: var(--background-color1);
+   
+    box-shadow: inset 0 5px 5px -5px rgba(0, 0, 0, 0.5); /* Sombra inset en el borde superior */
+
+    padding-bottom: 2px;
+  
+  }
+
+  .titulo {
+    text-align: justify !important;
+    padding-top: 20px;
+    
+    color: rgb(97, 94, 94) !important;
+  
+  }
+
+   
+  div{
+    padding-left: 50px;
+  } 
+
+  span {
+ 
+    padding-top: 20px;
+  
+    color: rgb(97, 94, 94) !important;
+  
+  }
+
+
+
+
+
+
+
+
+
+
+  .sidenav {
+    height: 75%;
+    width: 250px; /* Ancho del sidenav */
+
+    background-color:transparent;
+    left: 0px;
+
+    position:absolute;
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    margin-top: 40px;
+
+   
+ 
+}
+
+
+/* Sidenav: Título */
+.sidenav h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Sidenav: Lista */
+.sidenav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Sidenav: Elementos de lista */
+.sidenav li {
+  margin: 10px 0;
+}
+
+/* Sidenav: Enlaces */
+.sidenav a {
+    padding: 10px 10px;
+    text-decoration: none;
+    font-size: 13px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* Sidenav: Enlaces al pasar el ratón */
+.sidenav a:hover {
+    color: #2d2b2b;
+}
+
+/* Estilo del contenido principal */
+#main {
+    padding: 20px;
+}
+
+/* Scrollbar para navegadores Webkit (Chrome, Safari) */
+.sidenav::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+}
+
+.sidenav::-webkit-scrollbar-thumb {
+    background: #888; /* Color de la barra de desplazamiento */
+}
+
+.sidenav::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color de la barra de desplazamiento al pasar el ratón */
+}
+
+/* Scrollbar para navegadores de Mozilla */
+.sidenav {
+    scrollbar-width: thin;
+    scrollbar-color: #edebeb #f2f3f4; /* Color de la barra de desplazamiento y el fondo */
+}
+
+li:hover{
+  border-left: 2px solid #212123;
+  background-color: #c9c7c7;
+}
+
+#agregar, #editar{
+  margin-left: 250px;
+  margin-top: 45px;
+}
+
+.botones-container{
+  margin-left: 90px;
+
+}
+
+#a-registrar{
+  margin-left: 80px;
+}
+
+#lista {
+  position: relative; /* Necesario para posicionar el botón en relación con el li */
+}
+
+a {
+  display: flex; /* Usa flexbox para alinear elementos en una línea */
+  align-items: center; /* Alinea verticalmente los elementos dentro del <a> */
+  text-decoration: none; /* Opcional: elimina el subrayado del enlace */
+  color: inherit; /* Opcional: hereda el color del texto del contenedor */
+}
+
+#delete-button {
+  display: none; /* Oculta el botón por defecto */
+  margin-left: 10px; /* Espacio entre el texto y el botón */
+}
+
+#lista:hover #delete-button {
+  display: inline-block; /* Muestra el botón cuando se hace hover sobre el li */
+  position: absolute;
+  right: 10px;
+}
+
+textarea{
+  margin:auto !important;
+  width: 300px;
+  text-align: center;
+  resize: none;
+  background-color: transparent;
+}
+
+.boton {
+  background-color: #242434;
+  outline: none;
+  color: #ffffff;
+  font-size: 14px;
+  height: 40px;
+  font-weight: normal;
+  width: 100px;
+  text-align: center;
+  margin-top: 15px;
+  border-color: #242434;
+  border-radius: 5px;
+
+
+}
+
+.boton:hover {
+  color: #ffffff;
+  background-color: #6c5bb8;
+  border-color: #6c5bb8;
+}
+
+
+input,
+select {
+  width: 300px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  border-bottom: 1px solid #989898;
+  margin-top: 10px;
+}
+
+
+/*    MODAL    */
+
+
+/*    MODAL   */
+
+
+
+
+
+
+
+input[type="checkbox"]:checked ~ .modal,
+input[type="checkbox"]:checked ~ .modal-background {
+	display: block;
+}
+
+
+.modal-background {
+	width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+   
+    display: none;
+    z-index: 9998;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    
+    bottom: 0;
+    margin: auto;
+    display: none;
+    width: 400px;
+    height: 400px;
+    background-color: #fff;
+    box-sizing: border-box;
+    z-index: 9999;
+    padding-left: 0px;
+}
+.modal > p {
+	padding: 15px;
+    margin: 0;
+}
+.modal-header {
+	background-color: #f9f9f9;
+
+    box-sizing: border-box;
+    height: 55px;
+}
+.modal-header h3 {
+	margin: 0;
+    box-sizing: border-box;
+    padding-left: 15px;
+    line-height: 50px;
+    color: #4d4d4d;
+    font-size: 16px;
+    display: inline-block;
+    padding-bottom: 20px;
+}
+.modal-header label {
+	box-sizing: border-box;
+
+    float: right;
+    line-height: 50px;
+    padding: 0 15px 0 15px;
+    cursor: pointer;
+}
+.modal-header label:hover img {
+	opacity: 0.6;
+}
+
+#modal{
+  display: none;
+}
+
+
+/* SELECT BUSQUEDA */
+
+#usuarios{
+  width: 70px;
+  height: 20px;
+}
+
+/* Elimina los círculos y otros marcadores de lista */
+.tags {
+  list-style: none; /* Elimina los círculos */
+  margin: 0;        /* Elimina márgenes predeterminados */
+  padding: 0;       /* Elimina relleno predeterminado */
+}
+
+.tags li {
+  float: left;      /* Permite que los elementos se alineen horizontalmente */
+  
+}
+
+.tag {
+  background: #eee;
+  border-radius: 3px 0 0 3px;
+  color: #999;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.tag::before {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+  content: '';
+  height: 6px;
+  left: 10px;
+  position: absolute;
+  width: 6px;
+  top: 10px;
+}
+
+.tag::after {
+  background-color: transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 10px solid #eee;
+  border-top: 13px solid transparent;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.tag:hover {
+  background-color: crimson;
+  color: white;
+}
+
+.tag:hover::after {
+  border-left-color: crimson;
+}
+
+.tags > li:hover {
+  background-color: transparent;
+  border-left: 0px solid transparent;
+}
+
+#usuario-selecc {
+  background-color: transparent;
+  max-height: 167px;
+  max-width: 450px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #edebeb #f2f3f4;
+  padding-left: 1px;
+}
+
+
+#div-editar{
+  display: flex;
+  padding-left: 0px;
+}
+
+
+
+table {
+  background-color: transparent;
+  top: 300px;
+  width: 90%;
+  font: 1em sans-serif;
+  margin-right: 100px;
+  margin-left: 50px;
+  border-collapse: collapse;
+  margin-bottom: 50px;
+  height: 50px;
+}
+
+#no-miembros{
+  margin-right: 200px;
+  margin-left: 50px;
+}
+
+td{
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) cuando el texto se desborda */
+  white-space: nowrap; /* Evita que el texto se ajuste a múltiples líneas */
+  height:"50px";
+
+
+}
+
+thead{
+  padding-bottom: 20px !important;
+
+}
+
+tr{
+  padding-bottom: 20px !important;
+  border-bottom: 1px solid #dcd8d8;
+  height: 10px;
+}
+
+#view-button{
+  background-color: transparent;
+  border: none;
+  width: 70px;
+  height: 70px;
+}

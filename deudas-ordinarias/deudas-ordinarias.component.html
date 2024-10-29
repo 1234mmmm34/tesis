@@ -1,0 +1,122 @@
+<div class="div-opciones-deuda">
+                    <select class="select-deuda" [(ngModel)]="tipo_formulario" style="width: 200px; height: 30px;">
+                      <option value="" disabled selected>Selecciona el tipo de deuda</option>
+                     <option value="ordinario">Deudas Ordinarias</option>
+                     <option value="extraordinario">Deudas Extraordinarias</option>
+                    </select>
+</div>
+
+        
+
+
+<body *ngIf="tipo_formulario=='ordinario'">
+    <div class="contenedor">
+
+        <div class="form">
+            <h2 class="titulo">Deudas Ordinarias</h2>
+            <!-- Formulario para agregar una nueva deuda ordinaria -->
+            <form id="formCrear" class="Formulario" #form="ngForm" [formGroup]="UserGroup">
+
+                    <label for="fraccionamiento">Aplicar a:</label>
+
+                    <select type="text" id="destinatario" name="destinatario" value="destinatario"
+                     formControlName="destinatario" (change)="onChangeOption($event)">
+                     <option value="arrendatario">Arrendatario</option>
+                     <option value="propietario">Propietario</option>
+                     <option value="todos">Todos</option>
+                    </select>
+
+                    <label for="monto">Monto:</label>
+                    <input type="text" id="monto" name="monto" placeholder="Ingrese el monto" required
+                    formControlName="monto" [(ngModel)]="deuda.monto">
+
+                    <label for="nombreDeuda">Nombre de Deuda:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre de la deuda"
+                    required formControlName="nombre" [(ngModel)]="deuda.nombre">
+
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" placeholder="Ingrese una descripción" 
+                    formControlName="descripcion" [(ngModel)]="deuda.descripcion"></textarea>
+
+                    <label for="diasGracia">Días de gracia:</label>
+                    <select id="dias_gracia" name="dias_gracia" formControlName="dias_gracia" [(ngModel)]="deuda.dias_gracia">
+                        <option value="7">7 días</option>
+                        <option value="15">15 días</option>
+                        <option value="30">30 dias</option>
+                    </select>
+
+                    <label for="periodicidad">Periodicidad:</label>
+                    <select id="periodicidad" name="periodicidad" formControlName="periodicidad" [(ngModel)]="deuda.periodicidad">
+                        <option value="7">Cada 7 días</option>
+                        <option value="15">Cada 15 días</option>
+                        <option value="30">Mensualmente</option>
+                    </select>
+
+                    <label for="proximo_pagoOrdinario">Fecha de corte:</label>
+                    <input type="date" id="proximo_pagoOrdinario" name="proximo_pagoOrdinario" formControlName="proximo_pagoOrdinario" [(ngModel)]="fechaProximoPago" required >
+
+                    <label for="recargo">Monto del recargo:</label>
+                    <input type="text" id="recargo" name="recargo" placeholder="Ingrese el monto del recargo"
+                    required formControlName="recargo" [(ngModel)]="deuda.recargo">
+
+                <div class="botones-container">
+                    <button class="boton-verde" (click)="agregar_deuda(form.value)">Agregar</button>
+                    <button class="boton-azul" (click)="actualizar_deuda(form.value)">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+<body *ngIf="tipo_formulario=='extraordinario'">
+  <div class="contenedor">
+
+    <div class="form">
+        <h2 class="titulo">Deudas Extraordinarias</h2>
+        <!-- Formulario para agregar una nueva deuda ordinaria -->
+        <form id="formCrear" class="Formulario" #form="ngForm" [formGroup]="UserGroup2">
+
+                <label for="fraccionamiento">Aplicar a:</label>
+                <select type="text" id="destinatario2" name="destinatario2" value="destinatario2"
+                 formControlName="destinatario2" (change)="onChangeOption2($event)">
+                 <option value="arrendatario">Arrendatario</option>
+                 <option value="propietario">Propietario</option>
+                 <option value="todos">Todos</option>
+                 <option value="personalizado">Usuario específico</option>
+                </select>
+
+                <label *ngIf="especifico">Usuario a aplicar:</label>
+                <select *ngIf="especifico" id="cboxpersonas" name="cboxpersonas" required ngModel (change)="onChangeUsuario($event)" >
+                    <option  *ngFor="let usuario of personas">
+                        {{usuario.id_persona}}- {{usuario.nombre}} {{usuario.apellido_pat}} {{usuario.apellido_mat}}
+                    </option>
+                </select>
+
+                <label for="monto">Monto:</label>
+                <input type="number" id="monto" name="monto" placeholder="Ingrese el monto" required
+                formControlName="monto" [(ngModel)]="deuda.monto">
+
+                <label for="nombreDeuda">Nombre de Deuda:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre de la deuda"
+                required formControlName="nombre" [(ngModel)]="deuda.nombre">
+
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" placeholder="Ingrese una descripción" 
+                formControlName="descripcion" [(ngModel)]="deuda.descripcion"></textarea>
+
+                <label for="proximo_pago">Fecha de corte:</label>
+                <input type="date" id="proximo_pago" name="proximo_pago" formControlName="proximo_pago" [(ngModel)]="fechaCorte_extra" required >
+
+
+
+            <div class="botones-container">
+                <button class="boton-verde" (click)="agregar_deudaExtra(form.value)">Agregar</button>
+                <button class="boton-azul" (click)="actualizar_deudaExtra(form.value)">Actualizar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
