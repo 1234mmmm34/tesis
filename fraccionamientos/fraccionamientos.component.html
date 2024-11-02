@@ -18,8 +18,9 @@
     <div id="sidenav">
       <label>Mis controladores</label>
       <ul  *ngFor="let controlador of controladores">
-        <li id="lista" (click)="edit(controlador)"><a>{{controlador.nombre}}
-          <mat-icon id="delete-button" style="font-size:large;" (click)="Eliminar_fraccionamiento(controlador.id_controlador)">delete</mat-icon></a>
+        <li id="lista" (click)="edit(controlador)"><a><button id="conexion" style="display: inline-block;"></button>{{controlador.nombre}}
+          <mat-icon id="delete-button" style="font-size:large;" (click)="Eliminar_fraccionamiento(controlador.id_controlador)">delete</mat-icon>
+          </a>
         </li>
       </ul>
     </div>
@@ -39,6 +40,7 @@
     <p id="mensaje-bienvenida">¡Bienvenido al panel de controladores! selecciona o agrega un nuevo controlador</p>
 
  
+    <button (click)="abrir_puerta()">abrir_puerta</button>
   </div>
 
 
@@ -129,10 +131,13 @@
 
         <div class="botones-container" *ngIf="!editar">
           <button class="boton" (click)="Agregar_fraccionamiento(form.value)" onclick="myFunction()">Agregar</button>
+
         </div>
 
         <div class="botones-container" *ngIf="editar">
           <button class="boton" (click)="actualizarHikvision(form.value)" onclick="myFunction()">Guardar</button>
+          <button class="boton" (click)="Actualizar_Estado()">Habilitar</button>
+
         </div>
       </form>
     </div>

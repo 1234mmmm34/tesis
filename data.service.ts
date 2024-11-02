@@ -182,7 +182,7 @@ export class DataService {
   actualizarHikvision( f: any): Observable<fraccionamientos[]> {
 
 
-    const url = "https://localhost:44397/Hikvision/Actualizar_Hikvision?id_controlador="+f.id_controlador+"&nombre="+f.nombre+"&user="+f.user+"&password="+f.password+"&port="+f.port+"&ip="+f.ip;
+    const url = "https://localhost:44397/Hikvision/Actualizar_Hikvision?id_controlador="+f.id_controlador+"&nombre="+f.nombre+"&user="+f.user+"&password="+f.password+"&port="+f.port+"&ip="+f.oct1+"."+f.oct2+"."+f.oct3+"."+f.oct4;
     return this.http.put<fraccionamientos[]>(url,{});
 
   }

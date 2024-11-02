@@ -94,6 +94,12 @@ export class MisDeudasComponent {
         this.mostrarGrid = true;
 
        this.Deudores_totales = deudasUsuario
+       this.indice = 0;
+       this.cont = 1;
+       this.verdaderoRango = 6;
+       this.Deudores_totales2 = this.Deudores_totales.slice(this.indice, this.indice + this.verdaderoRango);
+
+
         console.log('deudas', this.Deudores_totales);
         if(this.Deudores_totales.length==0){
           Swal.fire({

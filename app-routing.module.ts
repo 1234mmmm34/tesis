@@ -110,6 +110,7 @@ const routes: Routes = [
       {
         path: "Configuracion", component: CuentaComponent
         , children: [
+          { path: "", component: EditarCuentaComponent },
           { path: "Grupos", component: GruposComponent },
           { path: "EditarCuenta", component: EditarCuentaComponent }
         ]
@@ -172,6 +173,7 @@ const routes: Routes = [
       {
         path: "Configuracion", component: CuentaComponent
         , children: [
+          { path: "", component: EditarCuentaComponent },
           { path: "Grupos", component: GruposComponent },
           { path: "EditarCuenta", component: EditarCuentaComponent }
         ]

@@ -7,6 +7,7 @@ body {
 
 }
 
+/*
 .imagen-cont{
   border-color: #000000;
   border-width: 3px 3px 3px 3px;
@@ -14,11 +15,12 @@ body {
   width: 300px;
   height: 300px;
   position: absolute;
-  left: 500px;
+  left: 300px;
   top: 100px;
 
 }
 
+*/
 #deuda-titulo{
   margin-left: 60px;
   margin-top: 20px;
@@ -293,7 +295,6 @@ z-index: 1000;
 
 width: 650px;
 height: 500px;
-margin-left: 50%;
 
  
 }
@@ -363,7 +364,7 @@ input[type="checkbox"]:checked ~ .modal-background {
     bottom: 0;
     margin: auto;
     display: none;	
-    width: 900px;
+    width: 500px;
     height: 550px;
     background-color: #fff;
     box-sizing: border-box;

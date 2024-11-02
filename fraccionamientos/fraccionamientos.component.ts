@@ -75,6 +75,53 @@ export class FraccionamientosComponent {
   }
 
   
+  async Actualizar_Estado(): Promise<boolean> {
+    const url = `https://localhost:44397/Hikvision/Actualizar_Estado?id_controlador=${this.controlador.id_controlador}&id_fraccionamiento=${this.dataService.obtener_usuario(3)}`;
+    
+    try {
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        Swal.fire({
+          title: 'Controlador actualizado',
+          text: '',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        });
+        this.fetchDataHikvision(this.dataService.obtener_usuario(3))
+        return response.ok; // Devuelve true si la respuesta es exitosa
+    } catch {
+        return false; // Devuelve false en caso de error
+    }
+}
+
+
+abrir_puerta(): void {
+  fetch('https://localhost:44397/Hikvision/Abrir_puerta', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ /* Aquí puedes incluir los datos que necesitas enviar */ }),
+  })
+      .then((response) => {
+          if (!response.ok) {
+              // Manejo de error sin console.log
+              return; // Salimos si hay un error
+          }
+          return response.json(); // o response.text() si no es JSON
+      })
+      .then((data) => {
+          // Aquí puedes manejar los datos sin imprimirlos en consola
+      })
+      .catch((error) => {
+          // Manejo de error sin console.log
+      });
+}
+
 
 
   cambiarColorBoton(): void {
@@ -89,6 +136,8 @@ export class FraccionamientosComponent {
       }
     }
   }
+
+
 
   onRowClicked(fraccionamiento: any) {
     this.id_fracc = fraccionamiento['id_fraccionamiento'];
@@ -106,6 +155,11 @@ export class FraccionamientosComponent {
     this.controlador.nombre = controladores.nombre;
     this.controlador.user = controladores.user;
     this.controlador.password = controladores.password;
+    
+    if(controladores.port=="null"){
+      controladores.port="0";
+    }
+
     this.controlador.port = controladores.port;
     this.octetos = (controladores.ip).split('.');
 
@@ -138,6 +192,8 @@ export class FraccionamientosComponent {
 
   limpiar(){
     this.UserGroup.reset();
+    this.editar = false;
+
   }
 
   
@@ -171,7 +227,6 @@ export class FraccionamientosComponent {
         }
       );
 
-      this.editar = false;
   }
 
 
@@ -180,15 +235,18 @@ export class FraccionamientosComponent {
 
     this.loadingService.show()
 
+   
+
     this.dataService.fetchDataHikvision(id_administrador).subscribe((controladores: controladores[]) => {
 
       //  this.mostrarGrid = true;
       this.loadingService.hide()
+      this.controladores = controladores;
 
+      //this.controladores[0].nombre += " (habilitado)";
 
 
       console.log(controladores);
-      this.controladores = controladores;
     });
   }
 

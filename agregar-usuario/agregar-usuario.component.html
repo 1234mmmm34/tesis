@@ -149,7 +149,7 @@
               </p>
 
               <p>
-                <label id="agregar" (click)="mandar_correo(form.value)">Enviar</label>
+                <label id="agregar" (click)="mandar_correo(usuario.correo)">Enviar</label>
               </p>
             </form>
 
@@ -252,6 +252,11 @@
 
       <form id="formCrear1" class="Formulario" #form="ngForm" [formGroup]="UserGroup1" style="top: 20px">
 
+        <p style="display: none;">
+          <input type="text" class="textb" formControlName="id_persona" name="id_persona" [(ngModel)]="usuario.id_persona"
+            placeholder="idpersona">
+        </p>
+
         <p>
           <input type="text" class="textb" formControlName="nombre" name="nombre" [(ngModel)]="usuario.nombre"
             placeholder="Nombre">
@@ -271,11 +276,11 @@
 
         <p>
           <input type="text" class="textb" id="telefono" formControlName="telefono" name="telefono"
-            [(ngModel)]="usuario.telefono" placeholder="Teléfono">
+          [(ngModel)]="usuario.telefono" placeholder="Teléfono">
         </p>
 
         <p>
-          <label id="agregar" (click)="actualizar_usuario(form.value)">Modificar</label>
+          <label id="agregar" (click)="actualizar_usuario(UserGroup1.value)">Modificar</label>
 
         </p>
 

@@ -27,8 +27,7 @@
                 <span>Filtrar por: </span>
                 <select id="tipoNotificacion" (change)="onChange($event)">
                     <option [ngValue]=2 [disabled]="true">-- Grupo de destinatarios --</option>
-                    <option value="-1">Todos</option>
-                    <option value="0">General</option>
+                    <option value="0">Todos</option>
                     <option value="1">Individual</option>
                 </select>
 
@@ -68,7 +67,7 @@
                             <span class="nuevo" *ngIf="notificacion.visualizacion === 1">nuevo</span>
                         </td>
                         <td>{{ notificacion.mensaje }}</td>
-                        <td>{{ notificacion.id_destinatario === 0 ? 'General' : notificacion.id_destinatario }}</td>
+                        <td>{{ notificacion.destinatario }}</td>
                         <td id="td-view">
 
                             <button type="button" id="view-button">

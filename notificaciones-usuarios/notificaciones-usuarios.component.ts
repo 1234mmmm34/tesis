@@ -28,7 +28,7 @@ export class NotificacionesUsuariosComponent {
 
   ngOnInit(): void {
     this.actualizarNotificaciones();
-    this.consultarNotificacion(this.idFraccionamiento, this.indice, this.verdaderoRango, this.idUsuario);
+    this.consultarNotificacion(this.idFraccionamiento, this.idUsuario);
   }
 
   pageChanged(event: any) {
@@ -68,15 +68,15 @@ export class NotificacionesUsuariosComponent {
       this.id_destinatario=selectedValue;
      // console.log(this.id_destinatario);
 
-     this.consultarNotificacion(this.dataService.obtener_usuario(1), 0, 100, this.id_destinatario);
+     this.consultarNotificacion(this.dataService.obtener_usuario(1), this.id_destinatario);
   }
   
 
-  consultarNotificacion(idFraccionamiento: any, indice: number, verdaderoRango: number, id_destinatario: number) {
+  consultarNotificacion(idFraccionamiento: any, id_destinatario: number) {
 
     this.loadingService.show();
 
-    this.notificacionesService.consultarNotificacion(idFraccionamiento, 0, 100, id_destinatario).subscribe((notificaciones: Notificaciones[]) => {
+    this.notificacionesService.consultarNotificacion(idFraccionamiento, id_destinatario).subscribe((notificaciones: Notificaciones[]) => {
       //  console.log("notificaciones: ", valor);
       this.loadingService.hide();
       this.mostrarGrid = true;

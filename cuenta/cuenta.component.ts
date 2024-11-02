@@ -135,7 +135,7 @@ export class CuentaComponent {
     if(this.dataService.obtener_usuario(7)=="usuario"){
 
       this.menuItems = [
-         { title: 'Mi cuenta', subItems: ['Editar perfil', 'Restablecer contraseña'], icon: "account_circle", route:"EditarCuenta" }, 
+        { title: 'Mi cuenta', path: '', subItems: ['Editar perfil', 'Restablecer contraseña'], icon: "account_circle", route:"EditarCuenta" },
          { title: 'Politicas y privacidad', icon: 'privacy_tip' },
          // { title: 'Apariencia', icon: 'settings_system_daydream'},
       

@@ -51,13 +51,13 @@
                         <th>Periodicidad</th>
                         <th>Retraso (dias)</th>
                         <th>Recargo</th>
-                        <th>Total</th>
+                        <th>Total</th> 
                         <th>Acciones y ver más</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr tr mat-row matRowDef="columns: displayedcolumns;"
-                        *ngFor="let deudor of Deudores_totales; let i = index" [ngClass]="{ 'row-red': calcularDiasRetraso(deudor.proximo_pago, deudor.periodicidad) > 0 }">
+                        *ngFor="let deudor of Deudores_totales2; let i = index" [ngClass]="{ 'row-red': calcularDiasRetraso(deudor.proximo_pago, deudor.periodicidad) > 0 }">
                         <th scope="row">{{ i + 1 }}</th>
                         <td>{{ deudor.tipo_deuda }}</td>
                         <td>{{ deudor.nombre_deuda }}</td>

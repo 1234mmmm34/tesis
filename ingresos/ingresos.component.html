@@ -2,17 +2,24 @@
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
+
 <body>
 
   <app-loading-spinner></app-loading-spinner>
 
   <div class="top">
+
     <h2 class="titulo">Gestión de ingresos</h2>
-    <p id="descripcion">Agrega tus entradas de dinero y administra tus finanzas.</p>
+    <p id="descripcion">Agrega tus entradas de dinero y administra tus finanzas. </p>
   </div>
+
  
+
+
+
   <div class="contenedor" *ngIf="mostrarGrid">
     <div id="buscar">
+
       <select class="select-deuda" [(ngModel)]="tipo_formulario" (change)="onChangeSelection($event)">
         <option value="" disabled selected>-- Selecciona el tipo de deuda --</option>
         <option value="">Deudas ordinarias</option>
@@ -20,12 +27,18 @@
       </select>
 
       <button class="help-button" (mouseover)="showHelp=true" (mouseout)="showHelp=false">?</button>
-      <span *ngIf="showHelp" class="help-message">Las deudas ordinarias consisten en todas aquellas que tienen que ser liquidas periodicamente; si son deudas extraordinarias, hablamos de deudas de pago único.</span>
+      <span *ngIf="showHelp" class="help-message">Las deudas ordinarias consisten en todas aquellas que tienen que ser
+        liquidas periodicamente; si son deudas extraordinarias, hablamos de deudas de pago único.</span>
+
 
       <label for="modal" class="boton" (click)="limpiar()">Agregar</label>
+
+
+
     </div>
   </div>
-    <div id="contenedor2" *ngIf="this.historial1.length > 0; else noencontrado">
+
+    <div id="contenedor2" *ngIf="this.historial1.length>0; else noencontrado">
       <table id="example" class="table" cellspacing="0">
         <thead>
           <tr>
@@ -36,20 +49,30 @@
             <th>Monto</th>
             <th>Recargo aplicado</th>
             <th>Estado</th>
+            <th>Fecha</th>
             <th>Comprobante</th>
-            <th style="text-align:center;width:200px;">Borrar</th>
+            <th>Generar recibo</th>
+            <th style="text-align:center;width:200px;">
+              Borrar
+            </th>
           </tr>
         </thead>
         <tbody>
-          <tr mat-row matRowDef="columns: displayedcolumns;" *ngFor="let hist of historial1; let j=index" (click)="onRowClicked(deuda)">
+          <tr mat-row matRowDef="columns: displayedcolumns;" *ngFor="let hist of historial1; let j=index"
+            (click)="onRowClicked(deuda)">
             <th scope="row">{{hist.id_deuda}}</th>
             <td>{{hist.nombre_persona}}</td>
-            <td>{{hist.tipo_deuda}}</td> 
+            <td>{{hist.tipo_deuda}}</td>
             <td class="fecha">{{hist.nombre_deuda}}</td>
             <td>${{hist.monto}} MXN</td>
             <td>${{hist.recargo}} MXN</td>
-            <td *ngIf="hist.estado=='pagado'" style="color: green">{{ hist.estado }}</td>
-            <td *ngIf="hist.estado=='abono'" style="color: rgb(69, 64, 10)">{{ hist.estado }}</td>
+            <td *ngIf="hist.estado=='pagado'" style="color: green">
+              {{ hist.estado }}
+            </td>
+            <td *ngIf="hist.estado=='abono'" style="color: rgb(69, 64, 10)">
+              {{ hist.estado }}
+            </td>
+            <td>{{hist.dia_registro}}</td>
             <td>
               <a href="{{hist.comprobante}}" style="text-decoration: none;" target="_blank">
               <button type="button" id="view-button">
@@ -58,65 +81,110 @@
               </a>
             </td>
             <td>
+              <a style="text-decoration: none;" target="_blank">
+              <button type="button" id="view-button" (click)="Generar_Recibo(hist.id)">
+                <mat-icon style="font-size:large; font-weight: bolder;text-decoration: none;">file_open</mat-icon>
+              </button>
+              </a>
+            </td>
+            <td>
+
               <button type="button" id="view-button">
                 <mat-icon style="font-size:large; font-weight: bolder;">close</mat-icon>
               </button>
             </td>
           </tr>
+
         </tbody>
       </table>
 
+
       <div class="pages">
-        <mat-paginator [length]="historial.length" [pageSize]="verdaderoRango" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="pageChanged($event)">
+        <mat-paginator [length]="historial.length" [pageSize]="verdaderoRango" [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page" (page)="pageChanged($event)">
         </mat-paginator>
       </div>
     </div>
 
 
+
+
+
+
+
+
   <ng-template #noencontrado>
     <div class="div-noen">
       <img class="noencontrado" src="./notfound.png" alt="hola">
-    </div>
-  </ng-template>
 
+    </div>
+
+  </ng-template>
   <!-------                              MODAL                          -->
+
+
   <input type="checkbox" id="modal">
+
   <label for="modal" class="modal-background"></label>
+
+
 
   <div class="modal">
     <div class="modal-header">
       <h3>Agregar ingresos {{formulario}}</h3>
+
       <label for="modal">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC" width="16" height="16" alt="">
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC"
+          width="16" height="16" alt="">
       </label>
+
+
+
     </div>
 
+
+
     <div class="form">
-      <div>
+
+
+
+      <div *ngIf="tipo_formulario==''">
+
+      </div>
+
+      <div *ngIf="tipo_formulario=='extraordinario'">
+
+
         <div class="form">
           <!-- Formulario para agregar un nuevo ingreso extraordinario -->
           <form id="formCrear" class="Formulario" [formGroup]="UserGroup">
+
+
             <p>
               <select id="usuarioExtra" name="usuarioExtra" required formControlName="usuarioExtra" (change)="onChangeUsuario($event)">
                 <option value='null' disabled selected>-- Selecciona un usuario --</option>
                 <option *ngFor="let usuario of personas" [value]="usuario.id_persona">
-                  {{ usuario.id_persona }} - {{ usuario.nombre }} {{ usuario.apellido_pat }} {{ usuario.apellido_mat }}
+                  {{ usuario.nombre }} {{ usuario.apellido_pat }} {{ usuario.apellido_mat }}
                 </option>
               </select>
             </p>
+            
+
 
             <p>
               <select #deudaExtra id="deudaExtra" name="deudaExtra" formControlName="deudaExtra" required ngModel (change)="onChangeDeuda($event)">
                 <option value='null' hidden selected>-- Selecciona una deuda --</option>
-                <option *ngFor="let deuda of deudasDelUsuario">
-                  {{deuda.nombre_deuda}}
+                <option *ngFor="let deuda of deudasDelUsuario" value="{{deuda.id_deuda}}">
+                   {{deuda.nombre_deuda}}
                 </option>
               </select>
             </p>
 
             <p *ngIf="id_deuda != 0" style="margin-left: 80px;">
-              <label name="monto_restante" formControlName="monto_restante" [(ngModel)]="monto">Monto restante:
-                ${{monto}} MXN</label>
+
+              <label name="monto_restante" formControlName="monto_restante" [(ngModel)]="monto_restante">Monto restante:
+                ${{total}} MXN</label>
             </p>
 
             <p>
@@ -146,13 +214,26 @@
             <p>
               <span *ngIf="archivoSeleccionado">{{ archivoSeleccionado?.name }}</span> <!-- Solo el nombre del archivo -->
             </p>
-
+            <!--btn_imagen-->
             <p>
               <button class="boton-verde" (click)="pagarDeudaExtraordinaria(montoDeudaExtra.value)">Pagar</button>
             </p>
           </form>
+
+        
+
         </div>
+
       </div>
+
     </div>
+
+
   </div>
+
+  <!---                               FINAL MODAL                                  -->
+
+
+
+
 </body>

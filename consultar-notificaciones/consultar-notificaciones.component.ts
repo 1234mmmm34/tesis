@@ -43,7 +43,7 @@ export class ConsultarNotificacionesComponent {
 
   ngOnInit(): void {
 
-    this.consultarNotificacion(this.dataService.obtener_usuario(1), this.indice, this.verdaderoRango, this.id_destinatario);
+    this.consultarNotificacion(this.dataService.obtener_usuario(1), this.id_destinatario);
   }
 
   pageChanged(event: any) {
@@ -91,15 +91,15 @@ export class ConsultarNotificacionesComponent {
     this.id_destinatario = selectedValue;
     // console.log(this.id_destinatario);
 
-    this.consultarNotificacion(this.dataService.obtener_usuario(1), 0, 100, this.id_destinatario);
+    this.consultarNotificacion(this.dataService.obtener_usuario(1), this.id_destinatario);
   }
 
 
-  consultarNotificacion(idFraccionamiento: any, indice: number, verdaderoRango: number, id_destinatario: number) {
+  consultarNotificacion(idFraccionamiento: any, id_destinatario: number) {
 
     this.loadingService.show()
 
-    this.NotificacionesService.consultarNotificacion(idFraccionamiento, 0, 100, id_destinatario).subscribe((notificaciones: Notificaciones[]) => {
+    this.NotificacionesService.consultarNotificacion(idFraccionamiento, id_destinatario).subscribe((notificaciones: Notificaciones[]) => {
 
      
       

@@ -40,8 +40,10 @@ export class DeudaService {
     return this.http.post<boolean>(url, formData);
   }
 
-  pagarDeudaExtraordinaria(idDeudor: number, idDeuda: number, idFraccionamiento: number, proximoPago: string, file: string, tipo_pago: string, monto: any): Observable<boolean> {
+  pagarDeudaExtraordinaria(recargo: any, idDeudor: number, idDeuda: number, idFraccionamiento: number, proximoPago: string, file: string, tipo_pago: string, monto: any, monto_pendiente: any): Observable<boolean> {
     const url = `${this.apiUrl}/Pagar_DeudaExtraordinaria`;
+
+    console.log("file: ",file)
 
     // Crear un objeto FormData para enviar datos y el archivo
     const formData = new FormData();
@@ -52,7 +54,11 @@ export class DeudaService {
     formData.append('file', file);
     formData.append('tipo_pago', tipo_pago.toString());
     formData.append('monto', monto);
+    formData.append('monto_pendiente', monto_pendiente);
+    formData.append('recargo', recargo);
 
+
+    console.log("formData: ", formData)
     return this.http.post<boolean>(url, formData);
   }
 

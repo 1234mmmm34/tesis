@@ -16,6 +16,7 @@ export interface deudas {
     recargo: any,
     proximo_pago1: any,
     proximo_pago: any,
+    deudor: any,
     nombre_deudor: any
 
     };
@@ -30,6 +31,7 @@ export interface deudas {
         dias_gracia: any;
         periodicidad: any;
         recargo: any;
+        destinatario: any;
         proximo_pago1: any;
         proximo_pago: any
 
@@ -72,6 +74,7 @@ export interface deudores {
             };
 
             export interface historial {
+                id: any,
                 id_deuda: any,
                 nombre_persona: any,
                 tipo_deuda: any,
@@ -79,5 +82,7 @@ export interface deudores {
                 monto: any,
                 recargo: any,
                 estado: any,
+                monto_restante: any,
+                dia_registro: any,
                 comprobante: any
                 };
