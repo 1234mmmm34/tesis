@@ -251,9 +251,9 @@ export class DeudasComponent {
       id_fraccionamiento: this.dataService.obtener_usuario(3),
       proximo_pago: deudas.proximo_pago,
       proximo_pago1: "string",
-      destinatario: this.destinatario,
+      destinatario: "0",
       deudor: 0,
-      nombre_deudor: this.destinatario
+      nombre_deudor: "0"
     }
 
     console.log("DEUDAS", params);

@@ -124,6 +124,7 @@
                     <!-- Formulario para agregar una nueva deuda ordinaria -->
                     <form id="formCrear" class="Formulario" #form="ngForm" [formGroup]="UserGroup">
 
+                   <!--
                         <p>
                             <select type="text" id="destinatario" name="destinatario" value="destinatario"
                                 formControlName="destinatario" (change)="onChangeOption2($event)">
@@ -132,6 +133,7 @@
                                 <option value="personalizado">Personalizado</option>
                             </select>
                         </p>
+-->
                         <p style="display: block; flex-direction: column;"> 
                             <input type="number" id="monto" name="monto" placeholder="Ingrese el monto (MXN)" required
                                 formControlName="monto" [(ngModel)]="deuda.monto">

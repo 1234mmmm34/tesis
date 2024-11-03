@@ -72,7 +72,7 @@
             <td *ngIf="hist.estado=='abono'" style="color: rgb(69, 64, 10)">
               {{ hist.estado }}
             </td>
-            <td>{{hist.dia_registro}}</td>
+            <td class="fecha">{{ hist.dia_registro | date:'dd/MM/yyyy' }}</td>
             <td>
               <a href="{{hist.comprobante}}" style="text-decoration: none;" target="_blank">
               <button type="button" id="view-button">
@@ -147,13 +147,7 @@
 
     <div class="form">
 
-
-
-      <div *ngIf="tipo_formulario==''">
-
-      </div>
-
-      <div *ngIf="tipo_formulario=='extraordinario'">
+      <div>
 
 
         <div class="form">

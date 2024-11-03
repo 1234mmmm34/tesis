@@ -53,7 +53,8 @@
                         *ngFor="let acuerdo of acuerdos1 | filtroAcuerdos: 'asunto': filtroAcuerdos | filtroFecha: 'fecha': filtroFecha">
                         <td class="asunto">{{ acuerdo.asunto }}</td>
                         <td>{{ acuerdo.detalles }}</td>
-                        <td>{{ acuerdo.fecha }}</td>
+                        <td class="fecha">{{ acuerdo.fecha | date:'dd/MM/yyyy' }}</td>
+
                         <td id="td-view">
 
                             <button type="button" id="view-button">

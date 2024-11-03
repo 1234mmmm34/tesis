@@ -44,6 +44,7 @@ export class IngresosComponent {
   monto: number = 0;
   monto_restante: number = 0;
   fecha_actual: string = new Date().toISOString().split('T')[0]; // 'yyyy-MM-dd'
+  subdeuda: number = 0;
 
 
   deudasDelUsuario: Deudores[] = [];
@@ -421,6 +422,8 @@ export class IngresosComponent {
       this.recargo = deudaSeleccionada.recargo;
     }
 
+    this.subdeuda = deudaSeleccionada.subdeuda;
+
     // Calcular la fecha del próximo pago sumando la periodicidad a la fecha de vencimiento
     const proximoPago = new Date(deudaSeleccionada.proximo_pago); // Convertir a objeto Date
     proximoPago.setDate(proximoPago.getDate() + this.periodicidad); // Sumar la periodicidad en días
@@ -515,7 +518,7 @@ export class IngresosComponent {
       await this.guardarImagenFirebase();
 
     
-        this.deudaService.pagarDeudaExtraordinaria(this.recargo, this.id_deudor, this.id_deuda, this.dataService.obtener_usuario(3), this.fechaProximoPago, this.urlComprobante , this.tipo_pago, this.total, montoDeudaExtra).subscribe(
+        this.deudaService.pagarDeudaExtraordinaria(this.recargo, this.id_deudor, this.id_deuda, this.dataService.obtener_usuario(3), this.fechaProximoPago, this.urlComprobante , this.tipo_pago, this.total, montoDeudaExtra, this.subdeuda).subscribe(
           (respuesta) => {
             if (respuesta) {
               Swal.fire({
