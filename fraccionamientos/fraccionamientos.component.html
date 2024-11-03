@@ -18,7 +18,7 @@
     <div id="sidenav">
       <label>Mis controladores</label>
       <ul  *ngFor="let controlador of controladores">
-        <li id="lista" (click)="edit(controlador)"><a><button id="conexion" style="display: inline-block;"></button>{{controlador.nombre}}
+        <li id="lista" (click)="edit(controlador)"><a>{{controlador.nombre}}
           <mat-icon id="delete-button" style="font-size:large;" (click)="Eliminar_fraccionamiento(controlador.id_controlador)">delete</mat-icon>
           </a>
         </li>
@@ -30,7 +30,7 @@
 
 
   <div class="contenedor">
-
+ 
     <label style="display: inline-block;">
       <button id="conexion" style="display: inline-block;"></button><p style="display: inline-block;"> conectado a {{nombreControlador}} con {{ipControlador}}</p>
     </label>
@@ -103,7 +103,7 @@
           placeholder="ip pública del controlador">
         -->
 
-        <div class="ip">
+        <div class="ip" *ngIf="!cambiarip">
           <input type="number" [(ngModel)]="controlador.oct1" formControlName="oct1" name="oct1" class="octeto" placeholder="127" min="1" max="999" oninput="validity.valid||(value='');">
           <label class="punto">.</label>
           <input type="number" [(ngModel)]="controlador.oct2" formControlName="oct2" name="oct2" class="octeto" placeholder="0" min="0" max="999" oninput="validity.valid||(value='');">
@@ -113,8 +113,14 @@
           <input type="number" [(ngModel)]="controlador.oct4" formControlName="oct4" name="oct4" class="octeto" placeholder="1" min="0" max="999" oninput="validity.valid||(value='');">
         </div>
 
+        <div *ngIf="cambiarip">
+          <input type="text" id="user" formControlName="ip" name="ip" [(ngModel)]="controlador.ip"
+          placeholder="ej. http://(insertar solo esto).com">
+        </div>
 
-       
+        <a (click)="cambiar_ip()" style="font-size: smaller;" id="enviar_correo">
+          Uso un dominio en vez de una ip
+        </a>
 
         <input type="number" id="port" formControlName="port" name="port" [(ngModel)]="controlador.port" min="1" max="65535" oninput="validity.valid||(value='');"
           placeholder="puerto">
@@ -127,7 +133,7 @@
         <input type="text" id="password" formControlName="password" name="password" [(ngModel)]="controlador.password"
           placeholder="contraseña">
 
-       
+        
 
         <div class="botones-container" *ngIf="!editar">
           <button class="boton" (click)="Agregar_fraccionamiento(form.value)" onclick="myFunction()">Agregar</button>
@@ -136,7 +142,7 @@
 
         <div class="botones-container" *ngIf="editar">
           <button class="boton" (click)="actualizarHikvision(form.value)" onclick="myFunction()">Guardar</button>
-          <button class="boton" (click)="Actualizar_Estado()">Habilitar</button>
+          <button class="boton" style="margin-left: 20px;" (click)="Actualizar_Estado()">Habilitar</button>
 
         </div>
       </form>
