@@ -7,7 +7,6 @@ import { Router } from "@angular/router";
 import {MatBadgeModule} from '@angular/material/badge';
 import { NotificacionesService } from '../consultar-notificaciones/notificaciones.service';
 import { Notificaciones } from '../modelos/notificaciones';
-import { Observable } from 'rxjs';
 
 
 
@@ -41,20 +40,23 @@ export class PanelPrincipalUserComponent {
 
 
   fillerNav = [
-    {name:"Home", route:"HomeUsuarios", icon:"home"},
+    {name:"PanelUsuarios", route:"PanelUsuarios", icon:"home"},
     {name:"Notificaciones", route:"Notificaciones_usuarios", icon:"assignment"},
-    {name:"Mis Deudas", route:"MisDeudas", icon:"priority_high"},
-    {name:"Proveedores", route:"Proveedores_usuarios", icon:"explore", children: [
-      {name:'',route:"", icon:""}]},
+    {name:"Mis deudas", route:"MisDeudas", icon:"priority_high"},
+    {name:"Proveedores", route:"Proveedores_usuarios", icon:"explore"},
+    {name:"Acceso a puerta",route:"AccesoPuerta", icon:"dashboard"}
+    /*
+    {name:"Acceso a puerta",route:"AccesoPuerta", icon:"dashboard", children: [
+      {name:'',route:"", icon:""}]}
+*/
     /*,
     {name:'Acuerdos',route:"Acuerdos_usuarios", icon:"supervised_user_circle", children: [
       {name:'',route:"", icon:""}
     ]},*/
   ]
- 
+
 
   fillerNav1 = [
-    
     { name: "Configuracion", route: "Configuracion", icon: "settings" },
     { name: "Salir", route: "../", icon: "exit_to_app" },
 
@@ -97,6 +99,7 @@ export class PanelPrincipalUserComponent {
     
 
   }
+
 
 
   imagenURL: string = '../assets/usuario.png';

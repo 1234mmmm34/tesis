@@ -1,16 +1,38 @@
-<div class="container">
-    <h2 class="titulo">Control de Acceso</h2>
+<!-- <div class="container">
+    <h2 class="titulo">Generar Invitación</h2>
 
     <div class="generar-container">
-        <button class="green-button" (click)="generarCodigoQR()">Generar</button>
+        <button class="green-button" (click)="generarToken()" >Generar</button>
+    </div>
+
+    <div class="qr-container" >
+        <img [src]="qrCodeDataUrl" alt="Presiona el Botón de Arriba para generar el código" #codigoQR >
+
+        <p class="advertencia">Comparte solamente con la persona que necesita acceso. No compartas este código con desconocidos.</p>
+
+        <button class="download-button" (click)="descargarCodigoQR()" >Descargar</button>
+    </div>
+</div> -->
+
+<div class="container">
+    <h2 class="titulo">Generar Invitación</h2>
+
+    <div class="generar-container">
+        <button class="green-button" (click)="generarToken()">Generar</button>
     </div>
 
     <div class="qr-container">
-        <img [src]="urlCodigoQR" alt="Presiona el Botón de Arriba para generar el código" #codigoQR >
+        <img [src]="qrCodeDataUrl" alt="Presiona el Botón de Arriba para generar el código" #codigoQR>
 
         <p class="advertencia">Comparte solamente con la persona que necesita acceso. No compartas este código con desconocidos.</p>
 
         <button class="download-button" (click)="descargarCodigoQR()">Descargar</button>
     </div>
+
+    <!-- Overlay de bloqueo -->
+    <div class="overlay" *ngIf="isBlocked">
+        <p class="bloqueado-mensaje">Esta sección se encuentra temporalmente bloqueada por el administrador de la comunidad, comunicate con él para más información</p>
+    </div>
 </div>
+
 

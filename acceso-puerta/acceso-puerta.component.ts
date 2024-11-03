@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Observable, Observer } from "rxjs";
 import { AccesoPuertaService } from './acceso-puerta.service';
+import { DataService } from '../data.service';
+import * as QRCode from 'qrcode';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-acceso-puerta',
@@ -8,28 +11,91 @@ import { AccesoPuertaService } from './acceso-puerta.service';
   styleUrls: ['./acceso-puerta.component.css']
 })
 export class AccesoPuertaComponent  {
-  //'https://api.qrserver.com/v1/create-qr-code/?data=fierro_ross@live.com.mx&size=150x150'
 
-  constructor(public userService:AccesoPuertaService){}
-  
-  @ViewChild('codigoQR') codigoQR!: ElementRef<HTMLImageElement>;
+  constructor(public accesoPuerta:AccesoPuertaService, private dataService:DataService){
 
-  urlCodigoQR: string = '';
-  userId: string ='';
+  }
+
+  token:string='';
+  enlaceConstruido:string ='';
+  qrCodeDataUrl: string = '';
+  isBlocked: boolean = false;
 
 
-  async generarCodigoQR() {
-    this.ObtenerToken();
-    const response = await fetch(this.urlCodigoQR);
-    const blob = await response.blob();
-    this.urlCodigoQR = URL.createObjectURL(blob);
-    // Mostrar la imagen después de generar el código QR
-    const imgElement = this.codigoQR.nativeElement;
-    imgElement.style.display = 'block';
+  ngOnInit():void{
+    console.log('Quiero ver que es estoooooooooooooooooooooooooooooo',this.dataService.obtener_usuario(13))
+
+    if(this.dataService.obtener_usuario(13) == 'permitido'){
+      this.isBlocked=false;
+      this.ObtenerToken();
+    }else{
+      this.isBlocked=true;
+      //this.mostrarMensajeBloqueo();
+    }
+
+
+  }
+
+  ObtenerToken():boolean{
+    this.accesoPuerta.consultarToken(this.dataService.obtener_usuario(1)).subscribe(
+      (token: string) => {
+        this.token=token;
+        console.log("El token obtenido essssssssssssssss:", this.token);
+        this.construirQr();
+        return true;
+      },
+      (error) => {
+
+        console.error('Error al obtener o no tenia ningun token generado', error);
+        return false;
+      }
+    );
+    return false;
+  }
+
+  generarToken() {
+    if(this.dataService.obtener_usuario(13) == 'permitido'){
+      this.isBlocked=false;
+    }else{
+      this.isBlocked=true;
+      //this.mostrarMensajeBloqueo();
+      return;
+    }
+
+      this.accesoPuerta.generarToken(this.dataService.obtener_usuario(1)).subscribe(
+        (token: string) => {
+          this.token=token;
+          this.construirQr();
+        },
+        (error) => {
+
+          console.error('Error al generar token', error);
+        }
+      );
+
+
+  }
+
+  construirQr(){
+    this.enlaceConstruido=`http://159.54.141.160/Student/PaseTemporal?token=${this.token}`;
+    QRCode.toDataURL(this.enlaceConstruido, (err: any, url: string) => {
+      if (err) {
+        console.error('Error generando el QR:', err);
+        return;
+      }
+      this.qrCodeDataUrl = url;
+    });
   }
 
   descargarCodigoQR() {
-    fetch(this.urlCodigoQR)
+    if(this.dataService.obtener_usuario(13) == 'permitido'){
+      this.isBlocked=false;
+    }else{
+      this.isBlocked=true;
+      //this.mostrarMensajeBloqueo();
+      return;
+    }
+    fetch(this.qrCodeDataUrl)
     .then(response => response.blob())
     .then(blob => {
       const url = URL.createObjectURL(blob);
@@ -47,23 +113,21 @@ export class AccesoPuertaComponent  {
     });
   }
 
-  ngOnInit(): void {
-    
-  }
 
-  ObtenerToken(){
-    this.userId = '1'; // Reemplaza con el ID del usuario
-    this.userService.getToken().subscribe(
-      (token: string) => {
-        // Una vez obtenido el correo electrónico, generamos el código QR
-        const url = `https://api.qrserver.com/v1/create-qr-code/?data=${token}&size=150x150`;
-        this.urlCodigoQR = url;
-      },
-      (error) => {
-        
-        console.error('Error al obtener el correo electrónico:', error);
-      }
-    );
-  }
-  
+
+  mostrarMensajeBloqueo() {
+    if (this.isBlocked) {
+        Swal.fire({
+            icon: 'info',
+            title: 'Sección bloqueada',
+            text: 'Esta sección está temporalmente inhabilitada. Por favor, intenta más tarde.',
+            showConfirmButton: true, // Mostrar botón de aceptar
+            confirmButtonText: 'Aceptar', // Texto del botón
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false
+        });
+    }
+}
+
 }

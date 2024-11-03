@@ -9,13 +9,25 @@ export class AccesoPuertaService {
 
   constructor(private http: HttpClient) {}
 
-  //https://localhost:44397/Usuarios/Generar_Token
-  //https://localhost:44397/Usuarios/Consultar_Correo?id_persona=${userId}
-  getToken(): Observable<string> {
-    const url = `https://localhost:44397/api/Whatsapp/Generar_Token`;
-    // Indicamos al HttpClient que esperamos un texto en la respuesta
-    return this.http.get(url, { responseType: 'text' });
-  } 
+  //http://159.54.141.160/Usuarios/Generar_Token
+  //http://159.54.141.160/Usuarios/Consultar_Correo?id_persona=${userId}
 
-  
+  apiUrl:string ='http://159.54.141.160/api/Whatsapp/';
+  generarToken(idUsuario: number): Observable<string> {
+    const url = `${this.apiUrl}Generar_Token?idUsuario=${idUsuario}`;
+
+    return this.http.get(url, { responseType: 'text' });
+  }
+
+  consultarToken(idUsuario: number): Observable<string> {
+    const url = `${this.apiUrl}Consultar_Token_Activo?idUsuario=${idUsuario}`;
+
+    return this.http.get(url, { responseType: 'text' });
+  }
+
+
+
+
+
+
 }

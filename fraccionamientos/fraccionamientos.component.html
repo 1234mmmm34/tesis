@@ -97,12 +97,7 @@
           <span *ngIf="showHelp" class="help-message">Agrega un nombre a tu controlador para una identificación más rápida</span>
         </div>
 
-
-        <!--
-                <input type="text" formControlName="ip" name="ip" [(ngModel)]="controlador.ip"
-          placeholder="ip pública del controlador">
-        -->
-
+<!-- 
         <div class="ip" *ngIf="!cambiarip">
           <input type="number" [(ngModel)]="controlador.oct1" formControlName="oct1" name="oct1" class="octeto" placeholder="127" min="1" max="999" oninput="validity.valid||(value='');">
           <label class="punto">.</label>
@@ -118,9 +113,14 @@
           placeholder="ej. http://(insertar solo esto).com">
         </div>
 
-        <a (click)="cambiar_ip()" style="font-size: smaller;" id="enviar_correo">
+                <a (click)="cambiar_ip()" style="font-size: smaller;" id="enviar_correo">
           Uso un dominio en vez de una ip
         </a>
+-->
+        <input type="text" id="user" formControlName="ip" name="ip" [(ngModel)]="controlador.ip"
+        placeholder="ej. http://(insertar solo esto).com">
+
+
 
         <input type="number" id="port" formControlName="port" name="port" [(ngModel)]="controlador.port" min="1" max="65535" oninput="validity.valid||(value='');"
           placeholder="puerto">

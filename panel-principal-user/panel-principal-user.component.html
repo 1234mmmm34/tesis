@@ -1,15 +1,11 @@
 
-<!--
 
 <head>
   <meta http-equiv="Expires" content="0">
   <meta http-equiv="Last-Modified" content="0">
   <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
   <meta http-equiv="Pragma" content="no-cache">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@250" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    integrity="sha512-MK2b4TlMxx9fL3tKYj39PT10AtaOu3u0kLW+2Yw1b0I6hBL2b2eMxVx1fG3fXjdWdHyo2uGpZ+ynfBHryzk2dA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
 
 </head>
@@ -19,7 +15,7 @@
 
     <button mat-icon-button (click)="snav.toggle()"><mat-icon class="mat-side">menu</mat-icon></button>
 
-    <h2><img src="../../assets/stu2.png" id="logo"><img></h2> 
+    <h2><img src="./assets/stu2.png" id="logo"><img></h2>
 
      <div style="background-color: transparent; width: 140px; height: 60px; border-radius: 80%; overflow: hidden; display: flex; align-items: center; position: relative; margin-left: 85%; padding-right: 40px;">
 
@@ -27,7 +23,7 @@
      <div class="notification-drop" style="background-color: #f2f3f4; width: 40px; height: 40px; position: fixed; right: 77px; top:16px;transform: translateX(-50%); border-radius: 80%; border: 1px solid #101146;"></div>
 
       <ul class="notification-drop">
-        <li class="item" style="margin-right: 100px;"> 
+        <li class="item" style="margin-right: 100px;">
           <mat-icon  matBadge="8+" matBadgeColor="warn" matBadgeSize="small" style=" transform: scale(1.5); -webkit-text-fill-color:#030542; position: relative; left: 75px;">circle_notifications</mat-icon>
 
           <ul style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); overflow-y: auto;overflow-x: hidden; height: 300px; width: 350px;">
@@ -36,128 +32,7 @@
               <p class="text-xs text-blue-600 cursor-pointer inline-block" style="margin-left: 10px; color: #030542; font-size: small;">Limpiar bandeja</p>
               <p class="text-xs text-blue-600 cursor-pointer inline-block;" style="margin-left: 110px; color: #030542; font-size: small;">Marcar como leídos</p>
             </div>
-            
-            <li *ngFor="let notificacion of notificaciones1" style="font-size: small; white-space: pre-line; text-overflow: ellipsis; word-wrap: break-word; border-bottom: 0.5px solid rgb(217, 217, 224); height: 24%;">
-              {{ notificacion.mensaje }}
-              <span style="display: block; color: #151867; padding-bottom: 5px;">10 minutes ago</span>
-            </li>
 
-          </ul>
-        </li>
-      </ul>
-
-      <img [src]="imagenURL" alt="Imagen" *ngIf="imagenURL !== ''" id="usuario"
-           style="width: 50px; height: 50px; object-fit: contain; position: absolute; left: 63%; transform: translateX(-50%); border-radius: 80%; border: 1px solid #030542;">
-    
-
-    </div>
-
-  </mat-toolbar>
-
-
-  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56">
-      <mat-nav-list>
-        <ng-container *ngFor="let Nav of fillerNav; let i = index;">
-
-          <ng-container *ngIf="Nav.children; else itemTemplate">
-            <mat-expansion-panel [expanded]="submenuAbierto === i" hideToggle class="mat-elevation-z0">
-              <mat-expansion-panel-header (click)="abrirSubmenu(i)">
-                <mat-panel-title>
-                  <mat-icon class="material-icons-outlined mat-iconn">{{ Nav.icon }}</mat-icon>
-                  <a style="position: absolute; left: 50px; font-size:15px; color: black; text-decoration: none;">{{
-                    Nav.name }}</a>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-
-              <mat-nav-list>
-                <a mat-list-item [routerLink]="subNav.route" *ngFor="let subNav of Nav.children" class="opciones"
-                  style="text-decoration: none;">
-                  <mat-icon>{{ subNav.icon }}</mat-icon>
-                  <p>{{ subNav.name }}</p>
-                </a>
-              </mat-nav-list>
-
-            </mat-expansion-panel> 
-          </ng-container>
-
-          <ng-template #itemTemplate>
-            <a mat-list-item [routerLink]="Nav.route" class="opciones" style="text-decoration: none;">
-              <mat-icon class="material-symbols-outlined mat-iconn"
-                style="-webkit-text-fill-color:#757575; transform: scale(1.2); font-weight: 120 !important;">{{ Nav.icon
-                }}</mat-icon>
-              <p style="color: #757575;">{{ Nav.name }} <span class="nuevo"
-                  *ngIf="Nav.name === 'Notificaciones'">15</span>
-              </p>
-            </a>
-          </ng-template>
-        </ng-container>
-
-        <hr>
-
-
-        <div class="configuracion">
-
-          <a mat-list-item *ngFor="let Nav of fillerNav1;" [routerLink]="Nav.route" class="opciones"
-            style="text-decoration: none;">
-            <mat-icon class="material-symbols-outlined mat-iconn"
-              style="text-decoration: none; -webkit-text-fill-color:#757575; transform: scale(1.2); font-weight: 120 !important;">{{Nav.icon}}</mat-icon>
-            <p style="color: #757575;">{{Nav.name}}</p>
-          </a>
-
-        </div>
-
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-
-
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-
-</div> -->
-
-
-
-
-<head>
-  <meta http-equiv="Expires" content="0">
-  <meta http-equiv="Last-Modified" content="0">
-  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@250" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    integrity="sha512-MK2b4TlMxx9fL3tKYj39PT10AtaOu3u0kLW+2Yw1b0I6hBL2b2eMxVx1fG3fXjdWdHyo2uGpZ+ynfBHryzk2dA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
-</head>
-
-<div *ngIf="shouldRun" class="example-container" [class.example-is-mobile]="mobileQuery.matches">
-  <mat-toolbar color="black" class="example-toolbar">
-
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon class="mat-side">menu</mat-icon></button>
-
-    <h2><img src="../../assets/stu2.png" id="logo"><img></h2> 
-
-     <div style="background-color: transparent; width: 140px; height: 60px; border-radius: 80%; overflow: hidden; display: flex; align-items: center; position: relative; margin-left: 85%; padding-right: 40px;">
-
-
-     <div class="notification-drop" style="background-color: #f2f3f4; width: 40px; height: 40px; position: fixed; right: 77px; top:16px;transform: translateX(-50%); border-radius: 80%; border: 1px solid #101146;"></div>
-
-      <ul class="notification-drop">
-        <li class="item" style="margin-right: 100px;"> 
-          <mat-icon  matBadge="8+" matBadgeColor="warn" matBadgeSize="small" style=" transform: scale(1.5); -webkit-text-fill-color:#030542; position: relative; left: 75px;">circle_notifications</mat-icon>
-
-          <ul style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); overflow-y: auto;overflow-x: hidden; height: 300px; width: 350px;">
-
-            <div style="display: flex;  height: 10%;">
-              <p class="text-xs text-blue-600 cursor-pointer inline-block" style="margin-left: 10px; color: #030542; font-size: small;">Limpiar bandeja</p>
-              <p class="text-xs text-blue-600 cursor-pointer inline-block;" style="margin-left: 110px; color: #030542; font-size: small;">Marcar como leídos</p>
-            </div>
-            
             <li *ngFor="let notificacion of notificaciones1" style="font-size: small; white-space: pre-line; text-overflow: ellipsis; word-wrap: break-word; border-bottom: 0.5px solid rgb(217, 217, 224); height: 24%;">
               {{ notificacion.mensaje }}
               <span style="display: block; color: #151867; padding-bottom: 5px;">10 minutes ago</span>
@@ -169,7 +44,7 @@
 
       <img [src]="imagenURL" alt="Imagen" *ngIf="imagenURL !== ''" id="usuario"
            style="width: 50px; height: 50px; object-fit: contain; position: absolute; left: 63%; transform: translateX(-50%); border-radius: 80%; border: 1px solid #030542; background-color: #757575;">
-    
+
       <!-- Punto de notificación -->
     </div>
 
@@ -180,13 +55,30 @@
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
       <mat-nav-list>
+
+        <div class="configuracion">
+
+          <a mat-list-item *ngFor="let Nav of fillerNav;" [routerLink]="Nav.route" class="opciones"
+            style="text-decoration: none;">
+            <mat-icon class="material-symbols-outlined mat-iconn"
+              style="text-decoration: none; -webkit-text-fill-color:#757575; transform: scale(1.2); font-weight: 120 !important;">{{Nav.icon}}</mat-icon>
+            <p style="color: #757575;">{{Nav.name}}</p>
+          </a>
+
+        </div>
+
+        <!--
         <ng-container *ngFor="let Nav of fillerNav; let i = index;">
+
+          <mat-icon class="material-symbols-outlined mat-iconn"
+            style="text-decoration: none; -webkit-text-fill-color:#757575; transform: scale(1.2); font-weight: 120 !important;">{{Nav.icon}}</mat-icon>
+          <p style="color: #757575;">{{Nav.name}}</p>
 
           <ng-container *ngIf="Nav.children; else itemTemplate">
             <mat-expansion-panel [expanded]="submenuAbierto === i" hideToggle class="mat-elevation-z0">
               <mat-expansion-panel-header (click)="abrirSubmenu(i)">
                 <mat-panel-title>
-                  <mat-icon class="material-icons-outlined mat-iconn">{{ Nav.icon }}</mat-icon>
+                  <mat-icon class="material-icons-outlined mat-icono">{{ Nav.icon }}</mat-icon>
                   <a style="position: absolute; left: 50px; font-size:15px; color: black; text-decoration: none;">{{
                     Nav.name }}</a>
                 </mat-panel-title>
@@ -213,8 +105,9 @@
               </p>
             </a>
           </ng-template>
-        </ng-container>
 
+        </ng-container>
+-->
         <hr>
 
 
@@ -245,7 +138,7 @@
 
       </div>
 
-     
+
       <router-outlet></router-outlet>
 
 
